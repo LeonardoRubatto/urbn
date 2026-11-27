@@ -23,12 +23,14 @@
 .avec { padding-block: var(--s-9); border-top: 1px solid var(--trait); }
 .avec-head { display: grid; grid-template-columns: 5fr 5fr; gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
 .avec-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
-/* Chaque collaborateur est une unité (nom + rôle) qui passe à la ligne entière : rien ne déborde. */
-.avec-list { list-style: none; padding: 0; margin: 0 0 0 16%; line-height: 1.02; }
-.avec-list li { display: inline-block; max-width: 100%; margin: 0 0.9em 0.18em 0; vertical-align: baseline; }
+/* Ordinateur : générique en texte continu, décalé à droite ; les noms se coupent où la ligne finit
+   (choix validé par le client). L’espace après chaque collaborateur permet le retour à la ligne entre deux. */
+.avec-list { list-style: none; padding: 0; margin: 0 0 0 22%; max-width: 74%; line-height: 1.02; }
+.avec-list li { display: inline; }
+.avec-list li::after { content: " "; }
 .avec-list a { text-decoration: none; }
 .avec-name { font-weight: 900; text-transform: uppercase; font-variation-settings: "wdth" var(--w, 100); color: var(--blanc); transition: color 270ms var(--ease-out); font-size: clamp(1.75rem, 0.9rem + 2.4vw, 3.5rem); letter-spacing: -0.01em; }
-.avec-role { white-space: nowrap; font-size: 0.8125rem; font-weight: 600; color: var(--gris); margin-left: 0.4em; letter-spacing: 0; text-transform: none; font-variation-settings: "wdth" 100; }
+.avec-role { white-space: nowrap; font-size: 0.8125rem; font-weight: 600; color: var(--gris); margin: 0 0.6em 0 0.4em; letter-spacing: 0; text-transform: none; font-variation-settings: "wdth" 100; }
 .avec-list li:nth-child(5n+1) .avec-name { font-size: clamp(2.25rem, 1rem + 3.6vw, 5rem); }
 .avec-list li:nth-child(5n+3) .avec-name { font-size: clamp(2rem, 1rem + 3vw, 4.25rem); }
 .avec-list li:nth-child(5n+4) .avec-name { font-size: clamp(1.5rem, 0.9rem + 1.8vw, 2.75rem); }
@@ -66,8 +68,10 @@
   .tableaux-head, .poles-head { margin-bottom: var(--s-6); }
   .bureau-head { margin-bottom: var(--s-6); }
   .avec-head { grid-template-columns: 1fr; gap: var(--s-3); }
-  .avec-list { margin-left: 0; line-height: 1.08; }
-  .avec-list li { margin-right: 0.7em; }
+  /* Téléphone : chaque collaborateur (nom + rôle) est une unité qui passe à la ligne entière : rien ne déborde. */
+  .avec-list { margin-left: 0; max-width: none; line-height: 1.08; }
+  .avec-list li { display: inline-block; max-width: 100%; margin: 0 0.7em 0.18em 0; vertical-align: baseline; }
+  .avec-list li::after { content: none; }
   .avec-role { white-space: normal; }
   .avec-name { font-size: clamp(1.5rem, 7vw, 2rem); }
   .avec-list li:nth-child(5n+1) .avec-name { font-size: clamp(2rem, 10vw, 2.75rem); }

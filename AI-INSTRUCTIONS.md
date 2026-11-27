@@ -78,7 +78,9 @@ sur ses propres vidéos ; le nom URBAINE PARIS est « projeté » en lignes empi
 - Séquence des projets de l’accueil : scène vidéo fixe + titres qui défilent, sur ordinateur **et** téléphone ; cadrage
   légèrement irrégulier différent pour chaque vidéo ; **ne pas ajouter de barres de progression** ni atténuer les projets.
 - Cinq pôles : boucles verticales du reel, entrée en rideau sur ordinateur.
-- « Avec » : générique de film en texte continu (tailles inégales, rôle en petit après chaque nom), sans grille ni points.
+- « Avec » : générique de film. Sur ordinateur, **texte continu décalé à droite** : les noms se coupent où la ligne finit
+  (tailles inégales, rôle en petit après chaque nom) ; **ne pas aligner un nom par ligne à gauche**. Sur téléphone seulement,
+  chaque nom + rôle forme un bloc qui passe à la ligne entier. Jamais de grille ni de points.
 - Téléphone : la couverture remplit l’écran (`100dvh`) ; les sections ont leur propre mise en page, pas une colonne compressée.
 
 ## 7. Carte du code (si on te demande de modifier l’apparence ou le fonctionnement)
