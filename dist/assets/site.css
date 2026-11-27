@@ -354,8 +354,17 @@ h1, h2, h3 { font-weight: 850; line-height: 0.92; letter-spacing: -0.01em; }
 .tableaux-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
 .tableaux-body { display: grid; grid-template-columns: 7fr 5fr; gap: 0; }
 .tableaux-stage { position: sticky; top: 9vh; height: 82vh; }
-.tableaux-frame { position: absolute; inset: 0; opacity: 0; transition: opacity 700ms var(--ease-out), clip-path 900ms var(--ease-out); clip-path: inset(6% 4% 6% 0); }
-.tableaux-frame.is-current { opacity: 1; clip-path: inset(0 0 0 0); }
+/* Chaque vidéo a son cadrage, légèrement irrégulier (angles décalés de 1 à 4 %, jamais les mêmes).
+   Même transition qu’avant : le cadre s’ouvre depuis un rectangle réduit et se pose sur sa forme. */
+.tableaux-frame { position: absolute; inset: 0; opacity: 0; transition: opacity 700ms var(--ease-out), clip-path 900ms var(--ease-out);
+  --c1: 0% 0%; --c2: 100% 0%; --c3: 100% 100%; --c4: 0% 100%;
+  clip-path: polygon(0% 6%, 96% 6%, 96% 94%, 0% 94%); }
+.tableaux-frame.is-current { opacity: 1; clip-path: polygon(var(--c1), var(--c2), var(--c3), var(--c4)); }
+.tableaux-frame:nth-child(5n+1) { --c1: 0% 3%; --c2: 100% 0%; --c3: 98.5% 100%; --c4: 1% 96.5%; }
+.tableaux-frame:nth-child(5n+2) { --c1: 2% 0%; --c2: 100% 4%; --c3: 100% 97%; --c4: 0% 100%; }
+.tableaux-frame:nth-child(5n+3) { --c1: 0% 0%; --c2: 97.5% 2.5%; --c3: 100% 100%; --c4: 2% 97%; }
+.tableaux-frame:nth-child(5n+4) { --c1: 1.5% 4%; --c2: 99% 0%; --c3: 100% 95.5%; --c4: 0% 100%; }
+.tableaux-frame:nth-child(5n+5) { --c1: 0% 1.5%; --c2: 100% 3.5%; --c3: 97% 98%; --c4: 0.5% 100%; }
 .tableaux-frame > .loop, .tableaux-frame > .still { height: 100%; }
 .tableaux-list { list-style: none; padding: 0; position: relative; z-index: 2; margin-left: -7vw; }
 .tableau { min-height: 82vh; display: flex; flex-direction: column; justify-content: center; padding-block: var(--s-8); }
@@ -431,8 +440,8 @@ h1, h2, h3 { font-weight: 850; line-height: 0.92; letter-spacing: -0.01em; }
      et la vidéo change quand un projet passe la ligne, juste sous la scène. */
   .js .tableaux-stage { display: block; position: sticky; top: 0; z-index: 3; height: 50svh; margin-inline: calc(var(--gutter) * -1); background: var(--salle); }
   .js .tableaux-stage::after { content: ""; position: absolute; inset: auto 0 -1px; height: 22%; z-index: 2; pointer-events: none; background: linear-gradient(transparent, var(--salle)); }
-  .js .tableaux-frame { clip-path: inset(4% 6% 4% 6%); }
-  .js .tableaux-frame.is-current { clip-path: inset(0 0 0 0); }
+  .js .tableaux-frame { clip-path: polygon(6% 4%, 94% 4%, 94% 96%, 6% 96%); }
+  .js .tableaux-frame.is-current { clip-path: polygon(var(--c1), var(--c2), var(--c3), var(--c4)); }
   .js .tableau-media { display: none; }
   .js .tableaux-list { position: relative; z-index: 1; }
   .js .tableau { min-height: 44svh; justify-content: flex-start; padding-block: var(--s-6) var(--s-5); }
