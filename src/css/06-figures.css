@@ -23,9 +23,10 @@
 .avec { padding-block: var(--s-9); border-top: 1px solid var(--trait); }
 .avec-head { display: grid; grid-template-columns: 5fr 5fr; gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
 .avec-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
-/* Ordinateur : générique en texte continu, décalé à droite ; les noms se coupent où la ligne finit
-   (choix validé par le client). L’espace après chaque collaborateur permet le retour à la ligne entre deux. */
-.avec-list { list-style: none; padding: 0; margin: 0 0 0 22%; max-width: 74%; line-height: 1.02; }
+/* Ordinateur : générique en texte continu, aligné sur le bord gauche (sous le titre « Avec ») ;
+   les noms se coupent où la ligne finit (choix validé par le client).
+   L’espace après chaque collaborateur permet le retour à la ligne entre deux. */
+.avec-list { list-style: none; padding: 0; margin: 0; line-height: 1.02; }
 .avec-list li { display: inline; }
 .avec-list li::after { content: " "; }
 .avec-list a { text-decoration: none; }
@@ -69,7 +70,7 @@
   .bureau-head { margin-bottom: var(--s-6); }
   .avec-head { grid-template-columns: 1fr; gap: var(--s-3); }
   /* Téléphone : chaque collaborateur (nom + rôle) est une unité qui passe à la ligne entière : rien ne déborde. */
-  .avec-list { margin-left: 0; max-width: none; line-height: 1.08; }
+  .avec-list { line-height: 1.08; }
   .avec-list li { display: inline-block; max-width: 100%; margin: 0 0.7em 0.18em 0; vertical-align: baseline; }
   .avec-list li::after { content: none; }
   .avec-role { white-space: normal; }
