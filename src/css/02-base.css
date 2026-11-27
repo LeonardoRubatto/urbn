@@ -1,0 +1,87 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--salle);
+  color: var(--blanc);
+  font-family: var(--font);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  font-variation-settings: "wdth" 100;
+  font-kerning: normal;
+  overflow-x: clip;
+  transition: --gel var(--gel-fade) var(--ease-out);
+}
+img, video, svg, picture { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+button { font: inherit; color: inherit; }
+p, h1, h2, h3, figure, ol, ul, dl, dd, blockquote { margin: 0; }
+ol[role="list"], ul[role="list"] { list-style: none; padding: 0; }
+h1, h2, h3 { font-weight: 850; line-height: 0.92; letter-spacing: -0.01em; }
+
+:focus-visible { outline: 2px solid var(--jaune); outline-offset: 3px; }
+::selection { background: var(--jaune); color: var(--noir); }
+
+.wrap { width: 100%; max-width: 1600px; margin-inline: auto; padding-inline: var(--gutter); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: var(--gutter); top: -60px; z-index: 50; background: var(--jaune); color: var(--noir); padding: 10px 14px; font-weight: 700; }
+.skip:focus { top: 12px; }
+
+/* Titres de section : étroits et noirs, comme les cartons « URBN’s VIEW ». */
+.section-title {
+  font-size: var(--t-title);
+  font-weight: 900;
+  font-variation-settings: "wdth" 62;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.005em;
+}
+
+.text-link { font-weight: 600; text-decoration-color: color-mix(in oklch, var(--gel) 80%, white); text-decoration-thickness: 2px; }
+.text-link:hover { text-decoration-color: var(--jaune); }
+
+.prose p + p, .prose p + blockquote, .prose blockquote + p { margin-top: 1.1em; }
+.prose blockquote {
+  margin: 1.6em 0;
+  font-size: var(--t-lead);
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--jaune);
+  font-variation-settings: "wdth" 92;
+}
+.prose blockquote p { margin: 0; }
+.prose h2 { font-size: 1.25rem; margin: 2em 0 0.5em; font-variation-settings: "wdth" 100; letter-spacing: 0; line-height: 1.2; }
+
+/* En-tête léger posé sur la couverture */
+.mast {
+  position: absolute; inset: 0 0 auto; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-5);
+  padding: var(--s-5) var(--gutter);
+}
+.brand { font-size: 1.625rem; font-weight: 800; text-decoration: none; letter-spacing: -0.03em; font-variation-settings: "wdth" 100; line-height: 1; }
+.brand span { color: var(--rouge); }
+.mast nav { display: flex; gap: clamp(16px, 3vw, 40px); }
+.mast nav a { text-decoration: none; font-weight: 600; font-size: 0.9375rem; padding-block: 12px; position: relative; }
+.mast nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: var(--jaune); transform: scaleX(0); transform-origin: left; transition: transform 270ms var(--ease-out); }
+.mast nav a:hover::after, .mast nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Pied de page */
+.foot { background: var(--noir); padding-top: var(--s-9); overflow: hidden; }
+.foot-mark { display: flex; align-items: flex-end; padding-inline: var(--gutter); line-height: 0.74; }
+.foot-mark span { font-size: clamp(6rem, 30vw, 30rem); font-weight: 900; font-variation-settings: "wdth" 125; letter-spacing: -0.04em; color: var(--salle-haut); }
+.foot-mark i { width: clamp(20px, 5vw, 80px); aspect-ratio: 1; border-radius: 50%; background: var(--rouge); margin-left: 0.6vw; margin-bottom: 0.4vw; }
+.foot-grid { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: var(--s-6); padding: var(--s-7) var(--gutter); color: var(--gris); font-size: 0.9375rem; border-top: 1px solid var(--trait); margin-top: var(--s-6); }
+.foot-grid a { color: var(--blanc); }
+.foot-credit { text-align: center; padding: var(--s-6) var(--gutter) var(--s-7); }
+.foot-credit a { color: #fff; font-weight: 800; font-size: 1.0625rem; text-decoration: none; letter-spacing: 0.01em; }
+.foot-credit a:hover { text-decoration: underline; text-decoration-color: var(--rouge); }
+
+@media (max-width: 700px) {
+  .mast { padding-block: var(--s-4); }
+  .mast nav { gap: var(--s-4); }
+  .mast nav a { font-size: 0.875rem; }
+  .brand { font-size: 1.375rem; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-grid p:first-child { grid-column: 1 / -1; }
+}

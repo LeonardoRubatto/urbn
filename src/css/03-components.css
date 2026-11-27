@@ -1,0 +1,146 @@
+/* ---------- Le décor projeté ----------
+   Chaque ligne a sa largeur d’Archivo (--w) ; assets/site.js ajuste la taille pour que toutes
+   les lignes remplissent la même largeur. Sans script, une taille approchée par ligne. */
+.decor { margin: 0; min-width: 0; max-width: 100%; overflow-x: clip; display: flex; flex-direction: column; font-weight: 900; text-transform: uppercase; line-height: 0.8; letter-spacing: -0.01em; }
+.decor-line {
+  display: block; width: max-content; max-width: none; white-space: nowrap;
+  font-variation-settings: "wdth" var(--w, 100);
+  font-size: var(--fit, calc(var(--decor-base, 11vw) * 100 / var(--w, 100)));
+  transition: font-size 1200ms var(--ease-out), font-variation-settings 1200ms var(--ease-out);
+}
+.decor[data-fitted] .decor-line { transition: font-size 1200ms var(--ease-out), font-variation-settings 1200ms var(--ease-out); }
+
+/* Lumière du projecteur : un faisceau dans la couleur du gel, jamais un aplat. */
+.plateau-light {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    radial-gradient(60% 75% at 12% 0%, color-mix(in oklch, var(--gel) 42%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 95% 100%, color-mix(in oklch, var(--gel) 22%, transparent), transparent 70%),
+    linear-gradient(to top, oklch(0.1 0.015 275 / 0.92), oklch(0.1 0.015 275 / 0.1) 46%, oklch(0.1 0.015 275 / 0.45));
+  mix-blend-mode: normal;
+}
+
+/* ---------- Boucles vidéo et images fixes ---------- */
+.loop, .still { position: relative; overflow: hidden; background: var(--salle-bas); }
+.loop picture, .loop video, .still picture { width: 100%; height: 100%; }
+.loop img, .loop video, .still img { width: 100%; height: 100%; object-fit: cover; }
+.loop video { position: absolute; inset: 0; opacity: 0; transition: opacity 600ms var(--ease-out); }
+.loop.is-playing video { opacity: 1; }
+
+/* ---------- Bouton film (ouvre la salle de projection) ---------- */
+.film {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: pointer; text-align: left;
+  background: var(--salle-bas); aspect-ratio: var(--ratio, 16/9); overflow: hidden; color: var(--blanc);
+}
+.film picture, .film img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease-out), filter 700ms var(--ease-out); }
+.film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, oklch(0.08 0.01 275 / 0.85), transparent 55%); }
+.film:hover img, .film:focus-visible img { transform: scale(1.035); filter: saturate(1.15); }
+.film-label { position: absolute; z-index: 1; left: var(--s-5); right: var(--s-5); bottom: var(--s-5); display: flex; align-items: flex-end; gap: var(--s-4); }
+.film-label strong { display: block; font-size: clamp(1.125rem, 0.9rem + 0.8vw, 1.5rem); font-weight: 800; line-height: 1.1; font-variation-settings: "wdth" 88; }
+.film-label span span { display: block; color: var(--gris); font-size: var(--t-small); margin-top: 2px; }
+.film-play {
+  flex: none; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--jaune); position: relative; transition: transform 270ms var(--ease-out);
+}
+.film-play::before { content: ""; position: absolute; left: 22px; top: 18px; border-left: 16px solid var(--noir); border-block: 10px solid transparent; }
+.film:hover .film-play, .film:focus-visible .film-play { transform: scale(1.1); }
+
+/* ---------- Salle de projection ---------- */
+.projection { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--blanc); }
+.projection::backdrop { background: oklch(0.06 0.01 275 / 0.94); }
+.projection-room {
+  width: 100%; height: 100%; display: grid; place-items: center; padding: 72px var(--gutter) var(--s-6);
+  background: radial-gradient(70% 60% at 50% 0%, color-mix(in oklch, var(--gel) 28%, transparent), transparent 70%);
+}
+.projection-screen { display: grid; gap: var(--s-3); max-width: 100%; max-height: 100%; }
+.projection-screen video { max-width: min(100%, 1280px); max-height: calc(100dvh - 180px); width: auto; height: auto; background: #000; box-shadow: 0 0 120px color-mix(in oklch, var(--gel) 35%, transparent); }
+.projection-screen figcaption { font-size: 0.9375rem; color: var(--gris); }
+.projection-screen figcaption strong { color: var(--blanc); margin-right: 8px; }
+.projection-screen figcaption a { color: var(--blanc); margin-left: 8px; }
+.projection-close { position: absolute; top: var(--s-4); right: var(--gutter); min-height: 44px; padding: 0 var(--s-5); background: none; border: 1px solid var(--trait); color: var(--blanc); font-weight: 700; cursor: pointer; }
+.projection-close:hover { border-color: var(--jaune); color: var(--jaune); }
+
+/* ---------- Billet perforé (slide-text-button, Kokonut UI, MIT) ---------- */
+.ticket {
+  display: inline-flex; align-items: stretch; min-height: 52px; text-decoration: none; font-weight: 800;
+  color: var(--noir); background: var(--blanc); font-variation-settings: "wdth" 92;
+}
+.ticket-window { overflow: hidden; display: grid; padding-inline: 20px; align-items: center; height: 52px; }
+.ticket-roll { display: grid; transition: transform 200ms var(--ease-roll); }
+.ticket-roll span { height: 52px; line-height: 52px; white-space: nowrap; }
+.ticket i { width: 52px; border-left: 2px dashed var(--salle); position: relative; }
+.ticket i::before, .ticket i::after { content: ""; position: absolute; left: 50%; top: 50%; background: currentColor; translate: -50% -50%; }
+.ticket i::before { width: 14px; height: 2px; }
+.ticket i::after { width: 2px; height: 14px; transition: transform 200ms var(--ease-roll); }
+.ticket:hover .ticket-roll, .ticket:focus-visible .ticket-roll { transform: translateY(-52px); }
+.ticket:hover i::after, .ticket:focus-visible i::after { transform: rotate(90deg); }
+.ticket:hover { background: var(--jaune); }
+
+/* ---------- Le bureau : Prénom NOM, comme dans le trailer ---------- */
+.bureau { padding-block: var(--s-10) var(--s-9); }
+.bureau-head { display: flex; align-items: baseline; gap: var(--s-5); flex-wrap: wrap; margin-bottom: var(--s-8); }
+.bureau-mandat { font-size: var(--t-lead); color: var(--jaune); font-weight: 700; }
+.bureau-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--s-5); align-items: start; }
+.person figure { position: relative; overflow: hidden; }
+.person img { aspect-ratio: 3/4; object-fit: cover; width: 100%; transition: transform 900ms var(--ease-out); }
+.person:hover img { transform: scale(1.03); }
+.person figcaption { position: absolute; left: var(--s-4); right: var(--s-4); bottom: var(--s-4); text-shadow: 0 1px 18px oklch(0 0 0 / 0.65); }
+.person--1 { grid-column: 1 / span 3; margin-top: var(--s-9); }
+.person--2 { grid-column: 4 / span 3; }
+.person--3 { grid-column: 7 / span 3; margin-top: var(--s-10); }
+.person--4 { grid-column: 10 / span 3; margin-top: var(--s-7); }
+.name { display: block; line-height: 0.9; }
+.name-first { display: block; font-size: clamp(1.25rem, 0.9rem + 1vw, 1.875rem); font-weight: 400; font-variation-settings: "wdth" 100; }
+.name-last { display: block; font-size: clamp(1.5rem, 0.9rem + 1.7vw, 2.75rem); font-weight: 900; text-transform: uppercase; font-variation-settings: "wdth" 125; letter-spacing: -0.02em; }
+.person-role { display: block; margin-top: var(--s-2); color: var(--jaune); font-weight: 700; font-size: 0.9375rem; }
+.bureau-merci { margin-top: var(--s-8); max-width: 62ch; color: var(--gris); }
+.bureau-merci a { color: var(--blanc); margin-left: 6px; }
+
+/* ---------- Contact ---------- */
+.contact { padding-block: var(--s-10); border-top: 1px solid var(--trait); }
+.contact-grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--s-7); align-items: end; }
+.contact-title { font-size: var(--t-huge); font-weight: 900; text-transform: uppercase; line-height: 0.8; }
+.contact-title span { display: block; }
+.contact-title span:first-child { font-variation-settings: "wdth" 62; }
+.contact-title span:last-child { font-variation-settings: "wdth" 125; color: var(--gel); font-size: 0.62em; letter-spacing: -0.03em; transition: color var(--gel-fade) var(--ease-out); }
+.contact-copy p { font-size: var(--t-lead); line-height: 1.4; color: var(--gris); max-width: 34ch; }
+.contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-5); margin-top: var(--s-6); }
+
+/* ---------- Rideau de passage entre pages (svg-path-page-transition-vertical, Codrops, MIT) ---------- */
+.curtain { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
+.curtain-trace { fill: var(--jaune); }
+.curtain-paper { fill: var(--curtain, var(--salle)); }
+.is-turning .curtain-trace { animation: curtain-in 175ms cubic-bezier(.55, 0, .7, .3) forwards; }
+.is-turning .curtain-paper { animation: curtain-in 165ms cubic-bezier(.55, 0, .7, .3) 32ms forwards; }
+@keyframes curtain-in {
+  0% { d: path("M 0 100 V 100 Q 50 100 100 100 V 100 Z"); }
+  60% { d: path("M 0 100 V 50 Q 50 20 100 50 V 100 Z"); }
+  100% { d: path("M 0 100 V 0 Q 50 0 100 0 V 100 Z"); }
+}
+
+/* ---------- Visionneuse photo (shapes-slideshow, Codrops, MIT) ---------- */
+.viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--blanc); }
+.viewer::backdrop { background: oklch(0.08 0.012 275 / 0.96); }
+.viewer-layout { height: 100%; display: grid; grid-template-rows: auto 1fr auto; padding: var(--s-4) var(--gutter) var(--s-5); gap: var(--s-4); }
+.viewer-close { justify-self: end; min-height: 44px; padding: 0 var(--s-5); background: none; border: 1px solid var(--trait); color: var(--blanc); font-weight: 700; cursor: pointer; }
+.viewer figure { display: grid; place-items: center; min-height: 0; gap: var(--s-3); grid-template-rows: 1fr auto; }
+.viewer img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; min-height: 0; }
+.viewer img.is-opening { animation: viewer-iris 450ms var(--ease-out); }
+@keyframes viewer-iris { from { clip-path: circle(0% at var(--ox, 50%) var(--oy, 50%)); } to { clip-path: circle(75% at var(--ox, 50%) var(--oy, 50%)); } }
+.viewer figcaption { color: var(--gris); font-size: 0.9375rem; text-align: center; }
+.viewer-controls { display: flex; justify-content: center; align-items: center; gap: var(--s-5); }
+.viewer-controls button { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--trait); background: none; cursor: pointer; position: relative; }
+.viewer-controls button::before { content: ""; position: absolute; inset: 0; margin: auto; width: 12px; height: 12px; border-top: 2px solid var(--blanc); border-left: 2px solid var(--blanc); }
+.viewer-prev::before { transform: translateX(3px) rotate(-45deg); }
+.viewer-next::before { transform: translateX(-3px) rotate(135deg); }
+.viewer-controls button:hover { border-color: var(--jaune); }
+.viewer-count { font-variant-numeric: tabular-nums; color: var(--gris); }
+
+@media (max-width: 900px) {
+  .bureau-list { grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  .person--1, .person--2, .person--3, .person--4 { grid-column: auto; margin-top: 0; }
+  .person--2, .person--4 { margin-top: var(--s-8); }
+  .person--3 { margin-top: calc(var(--s-8) * -1); }
+  .person figcaption { left: var(--s-3); right: var(--s-3); bottom: var(--s-3); }
+  .contact-grid { grid-template-columns: 1fr; }
+}

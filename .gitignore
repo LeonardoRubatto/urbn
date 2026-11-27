@@ -1,0 +1,17 @@
+# Seules les sources du site sont versionnées (liste blanche). dist/ est généré par npm run build
+# et, sur GitHub, par .github/workflows/site.yml.
+/*
+!/.gitignore
+!/.github/
+!/README.md
+!/GUIDE-PUBLICATION.md
+!/AI-INSTRUCTIONS.md
+!/CREDITS.md
+!/package.json
+!/package-lock.json
+!/content/
+!/media/
+!/src/
+!/scripts/
+!/_modeles/
+/media/instagram-publications.json

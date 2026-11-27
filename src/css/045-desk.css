@@ -1,0 +1,82 @@
+/* ---------- La composition décalée (couverture validée R-005, passée au noir) ----------
+   Titre, index des publications en marge, plan photo découpé en biais, papier teinté décalé,
+   affiche qui traverse la découpe, crédit, légende en ligne. */
+.desk { position: relative; overflow-x: clip; padding-top: var(--s-9); padding-bottom: var(--s-9); }
+.desk--hero { padding-top: 110px; }
+.desk::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+  background: radial-gradient(45% 55% at 70% 45%, color-mix(in oklch, var(--gel) 22%, transparent), transparent 72%); transition: --gel var(--gel-fade) var(--ease-out); }
+.desk-title { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-5); }
+.desk-title h1, .desk-title h2 { font-size: clamp(4rem, 1rem + 11.4vw, 12.5rem); font-weight: 900; line-height: 0.78; letter-spacing: -0.045em; font-variation-settings: "wdth" 108; }
+.desk-title h1 span, .desk-title h2 span { display: inline-block; width: 0.17em; height: 0.17em; background: var(--rouge); color: transparent; overflow: hidden; vertical-align: baseline; margin-left: 0.02em; }
+.desk-title p { font-weight: 700; font-size: 0.9375rem; line-height: 1.35; text-align: right; color: var(--gris); padding-bottom: 0.6em; }
+
+.desk-body { display: grid; grid-template-columns: minmax(180px, 220px) 1fr; gap: var(--s-6); align-items: end; margin-top: calc(var(--s-4) * -1); }
+.press-tabs { display: grid; align-self: center; border-top: 1px solid var(--trait); }
+.press-tabs button { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); min-height: 76px; padding: var(--s-3) 0 var(--s-3) var(--s-3); background: none; border: 0; border-bottom: 1px solid var(--trait); text-align: left; cursor: pointer; position: relative; color: var(--gris); }
+.press-tabs button::before { content: ""; position: absolute; left: 0; top: 18%; bottom: 18%; width: 3px; background: var(--gel); transform: scaleY(0); transition: transform 270ms var(--ease-out); }
+.press-tabs button[aria-selected="true"] { color: var(--blanc); }
+.press-tabs button[aria-selected="true"]::before { transform: scaleY(1); }
+.desk-tab-text span { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.desk-tab-text strong { display: block; font-size: 1.125rem; font-weight: 800; color: var(--blanc); font-variation-settings: "wdth" 96; line-height: 1.15; }
+.desk-tab-thumb { flex: none; width: 46px; height: 46px; overflow: hidden; transform: rotate(3deg); transition: transform 270ms var(--ease-out); }
+.desk-tab-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.press-tabs button:nth-child(even) .desk-tab-thumb { transform: rotate(-4deg); }
+.press-tabs button:hover .desk-tab-thumb, .press-tabs button[aria-selected="true"] .desk-tab-thumb { transform: rotate(0); }
+
+.dispatch-panel[hidden] { display: none; }
+.dispatch-image { position: relative; padding-left: 16%; margin-top: var(--s-5); }
+.dispatch-photo { position: relative; aspect-ratio: 16/9.4; clip-path: polygon(14% 0, 100% 8%, 100% 88%, 0 100%); }
+.dispatch-photo > .loop, .dispatch-photo > .still { position: absolute; inset: 0; }
+.dispatch-image:has(.dispatch-poster)::before { content: ""; position: absolute; left: 6%; top: 17%; width: 26%; height: 26%; background: color-mix(in oklch, var(--gel) 60%, var(--salle)); z-index: -1; transition: background var(--gel-fade) var(--ease-out); }
+.dispatch-poster { position: absolute; left: 3%; top: 19%; width: 20%; transform: rotate(-4deg); transition: transform 270ms var(--ease-out); box-shadow: 0 24px 50px oklch(0 0 0 / 0.55); z-index: 2; }
+.dispatch-poster:hover { transform: rotate(0deg); }
+.dispatch-credit { position: absolute; right: 0; bottom: 0; transform: translateY(140%); font-size: 0.8125rem; color: var(--gris); }
+.dispatch-caption { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-7); align-items: center; padding-left: clamp(0px, 30% - 120px, 30%); margin-top: var(--s-7); }
+.dispatch-caption > div { flex: 0 1 auto; }
+.dispatch-deck { flex: 1 1 24ch; min-width: 24ch; max-width: 36ch; }
+.dispatch-caption h2 { font-size: clamp(2.25rem, 1rem + 2.6vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; font-variation-settings: "wdth" 100; line-height: 0.95; }
+.dispatch-caption h2 + p { font-size: var(--t-small); color: var(--gris); margin-top: var(--s-1); }
+.dispatch-deck { font-size: 0.9375rem; line-height: 1.45; }
+.dispatch-panel.is-printing .dispatch-photo { animation: diaphragm 480ms var(--ease-out); }
+@keyframes diaphragm { from { clip-path: polygon(50% 40%, 50% 40%, 50% 60%, 50% 60%); } }
+
+/* ---------- Cinq pôles (reel « l’urbaine et ses 5 pôles ») ---------- */
+.poles-reel { padding-block: var(--s-9) var(--s-10); overflow-x: clip; }
+.poles-head { display: grid; grid-template-columns: 5fr 5fr auto; gap: var(--s-6); align-items: end; margin-bottom: var(--s-8); }
+.poles-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
+.poles-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-3); align-items: start; }
+.pole { position: relative; }
+.pole .loop { aspect-ratio: 9/16; }
+.pole--2 { margin-top: var(--s-9); }
+.pole--3 { margin-top: var(--s-6); }
+.pole--4 { margin-top: var(--s-10); }
+.pole--5 { margin-top: var(--s-4); }
+.pole-name { display: block; margin-top: var(--s-3); font-size: 0.9375rem; font-weight: 800; color: var(--blanc); font-variation-settings: "wdth" 110; }
+.pole-name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jaune); margin-right: 8px; vertical-align: 1px; }
+
+@media (max-width: 900px) {
+  .desk { padding-top: var(--s-8); }
+  .desk--hero { padding-top: 84px; }
+  .desk-title { display: block; }
+  .desk-title h1, .desk-title h2 { font-size: clamp(3.75rem, 19vw, 6rem); }
+  .desk-title p { text-align: left; margin-top: var(--s-3); padding: 0; }
+  .desk-body { display: block; margin-top: var(--s-5); }
+  .press-tabs { display: flex; gap: var(--s-4); border: 0; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+  .press-tabs button { min-height: 44px; border: 0; padding: 0; flex: none; }
+  .press-tabs button::before { left: 0; right: 0; top: auto; bottom: 4px; width: auto; height: 2px; transform: scaleX(0); }
+  .press-tabs button[aria-selected="true"]::before { transform: scaleX(1); }
+  .desk-tab-text span, .desk-tab-thumb { display: none; }
+  .desk-tab-text strong { font-size: 1rem; }
+  .dispatch-image { padding-left: 0; margin-top: var(--s-6); }
+  .dispatch-photo { margin-left: 22%; aspect-ratio: 4/3.6; }
+  .dispatch-image::before { left: 0; top: 10%; width: 28%; height: 30%; }
+  .dispatch-poster { left: 2%; top: 8%; width: 32%; }
+  .dispatch-credit { position: static; transform: none; display: block; text-align: right; margin-top: var(--s-2); }
+  .dispatch-caption { flex-direction: column; align-items: flex-start; gap: var(--s-4); padding-left: 0; margin-top: var(--s-5); }
+  .dispatch-deck { min-width: 0; max-width: none; flex: none; }
+  .poles-head { grid-template-columns: 1fr; gap: var(--s-4); }
+  .poles-strip { grid-template-columns: 1fr 1fr; gap: var(--s-6) var(--s-3); }
+  .pole { margin-top: 0 !important; }
+  .pole:nth-child(even) { margin-top: var(--s-9) !important; margin-bottom: calc(var(--s-9) * -1); }
+  .pole:last-child:nth-child(odd) { grid-column: 1 / span 1; }
+}

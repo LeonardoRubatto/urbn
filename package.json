@@ -1,0 +1,20 @@
+{
+  "name": "urbaine-paris",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site de L'Urbaine Paris : contenus en Markdown/YAML dans content/, médias sources dans media/, pages HTML statiques générées dans dist/.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "media": "node scripts/media.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0",
+    "sharp": "^0.34.5",
+    "yaml": "^2.8.1"
+  }
+}

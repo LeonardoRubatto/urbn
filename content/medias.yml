@@ -1,0 +1,283 @@
+# Registre des médias. Chaque image ou vidéo utilisée par le site est déclarée ici, une fois.
+# Les fichiers originaux sont dans media/images/ et media/videos/ ; le build crée les versions web.
+#
+# Image :   clé: { fichier, alt, credit, source, cadrage }
+#   - alt      : ce qu’on voit, pour les personnes qui ne voient pas l’image (obligatoire)
+#   - credit   : auteur ou compte qui a publié la photo (obligatoire)
+#   - source   : adresse de la publication d’origine (conseillé)
+#   - cadrage  : point à garder visible quand l’image est recadrée, ex. "50% 30%" (facultatif)
+#
+# Vidéo :   clé: { fichier, titre, credit, source, film, affiche, boucles }
+#   - film: true     → la vidéo entière est lisible sur le site (avec le son)
+#   - affiche        → seconde de la vidéo utilisée comme image d’attente du film
+#   - boucles        → extraits muets qui tournent en boucle : nom: { debut, duree, alt }
+#                      on y renvoie ailleurs par « clé#nom », ex. dau-clash-7-retour#salle
+
+images:
+  dau-clash-8-affiche:
+    fichier: dau-clash-8-affiche.jpg
+    alt: "Affiche de la 8e édition du DAU’Clash : deux rappeurs dessinés en bleu, lettres DAU découpées, rendez-vous le 2 décembre à l’amphi 1 à 18 h 45"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/Df7wfiIxZfK/
+  trailer-2026-couverture:
+    fichier: trailer-2026-couverture.jpg
+    alt: "Une DJ sous un néon violet en forme de globe, dans une cave voûtée"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DePhnztxsAu/
+    cadrage: "50% 40%"
+  mois-de-rentree-couverture:
+    fichier: mois-de-rentree-couverture.jpg
+    alt: "Une DJ en chemise blanche et corset brodé derrière ses platines, de nuit"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DeRp6MigAj3/
+    cadrage: "40% 35%"
+  urbaine-famille-couverture:
+    fichier: urbaine-famille-couverture.jpg
+    alt: "Des membres de L’Urbaine de dos, de nuit, en t-shirts noirs imprimés d’un visage"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DdUDF0Vg09C/
+    cadrage: "60% 60%"
+  doa-affiche:
+    fichier: doa-affiche.jpg
+    alt: "Affiche de l’émission de rentrée de Dauphine On Air : un visage en noir et blanc, des lèvres de couleur superposées"
+    credit: DOA Dauphine On Air
+    source: https://www.instagram.com/dauphine_on_air/reel/DeRwalAouKf/
+  urbns-view-1-couverture:
+    fichier: urbns-view-1-couverture.jpg
+    alt: "La scène de l’Apollo Théâtre pendant Le Bourgeois gentilhomme, un canapé rouge et des t-shirts suspendus"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DVBwm6DDJ9U/
+    cadrage: "50% 60%"
+
+  bureau-2026-0:
+    fichier: bureau-2026-0.jpg
+    alt: "Le bureau 2026–2027 de L’Urbaine, quatre personnes debout devant des palmiers"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+    cadrage: "50% 45%"
+  bureau-2026-1:
+    fichier: bureau-2026-1.jpg
+    alt: "Lucas Sun, président, en t-shirt gris sur un sol pavé"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+    cadrage: "50% 35%"
+  bureau-2026-2:
+    fichier: bureau-2026-2.jpg
+    alt: "Victoire Lavigne, vice-présidente, en haut noir et pantalon camouflage"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+    cadrage: "50% 35%"
+  bureau-2026-3:
+    fichier: bureau-2026-3.jpg
+    alt: "Bilal Gallart, secrétaire général, en haut noir à boutons"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+    cadrage: "50% 35%"
+  bureau-2026-4:
+    fichier: bureau-2026-4.jpg
+    alt: "Fatou Drame Thiam, trésorière, foulard rouge et longues tresses, souriante"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+    cadrage: "50% 35%"
+
+  wed-2026-0:
+    fichier: wed-2026-0.jpg
+    alt: "Plongeon dans une piscine bleue, deux personnes au bord"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-1:
+    fichier: wed-2026-1.jpg
+    alt: "Autour d’une table ronde dans un appartement, verres et chips"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-2:
+    fichier: wed-2026-2.jpg
+    alt: "Deux personnes assises sur des rochers sous des pins, ciel bleu"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-3:
+    fichier: wed-2026-3.jpg
+    alt: "Deux amies à la terrasse d’un bar le soir, cocktails orange"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+    cadrage: "50% 40%"
+  wed-2026-4:
+    fichier: wed-2026-4.jpg
+    alt: "Deux personnes qui rient dans une cuisine, l’une en maillot rouge"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+    cadrage: "50% 35%"
+  wed-2026-5:
+    fichier: wed-2026-5.jpg
+    alt: "Deux amies au coucher du soleil sur un balcon"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-6:
+    fichier: wed-2026-6.jpg
+    alt: "Un groupe dans un jardin avec une fontaine et des cyprès"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-7:
+    fichier: wed-2026-7.jpg
+    alt: "Baignade dans la piscine d’une résidence au soleil"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-8:
+    fichier: wed-2026-8.jpg
+    alt: "Un groupe de dos face à la mer, sous les arbres"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+  wed-2026-9:
+    fichier: wed-2026-9.jpg
+    alt: "Préparatifs sur un balcon au soleil couchant, serviettes roses sur la tête"
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/p/Dc_NeCnEUjL/
+
+  fresque-bois-1:
+    fichier: fresque-bois-1.jpg
+    alt: "La fresque Fenêtre sur Bois sur deux murs d’une salle de cours aux tables rouges"
+    credit: Crous de Paris · œuvre de GraffDeco
+    source: https://www.crous-paris.fr/2024/04/08/projet-cvec-zoom-sur-la-fresque-murale-a-luniversite-paris-dauphine/
+  fresque-bois-2:
+    fichier: fresque-bois-2.jpg
+    alt: "Détail de Fenêtre sur Bois : un lac, des arbres et un kiosque peints au mur"
+    credit: Crous de Paris · œuvre de GraffDeco
+    source: https://www.crous-paris.fr/2024/04/08/projet-cvec-zoom-sur-la-fresque-murale-a-luniversite-paris-dauphine/
+  fresque-bois-3:
+    fichier: fresque-bois-3.jpg
+    alt: "Inauguration de la fresque, un groupe discute dans la salle"
+    credit: Crous de Paris · œuvre de GraffDeco
+    source: https://www.crous-paris.fr/2024/04/08/projet-cvec-zoom-sur-la-fresque-murale-a-luniversite-paris-dauphine/
+  fresque-bois-4:
+    fichier: fresque-bois-4.jpg
+    alt: "Les partenaires du projet posent devant la fresque Fenêtre sur Bois"
+    credit: Crous de Paris · œuvre de GraffDeco
+    source: https://www.crous-paris.fr/2024/04/08/projet-cvec-zoom-sur-la-fresque-murale-a-luniversite-paris-dauphine/
+  street-art-1:
+    fichier: street-art-1.jpg
+    alt: "La fresque de Jibé sous une passerelle de béton, formes colorées sur fond bleu"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+  street-art-2:
+    fichier: street-art-2.jpg
+    alt: "Une passante floue devant la fresque de Jibé, couleurs vives sur fond bleu nuit"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+  street-art-3:
+    fichier: street-art-3.jpg
+    alt: "Détail de la fresque de Jibé : cercles, vagues roses et jaunes"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+  street-art-4:
+    fichier: street-art-4.jpg
+    alt: "Visiteuses devant les photographies du Lab Photo accrochées sur un mur jaune"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+  street-art-5:
+    fichier: street-art-5.jpg
+    alt: "Un visiteur montre une photographie de cheval exposée sur le mur jaune"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+  street-art-7:
+    fichier: street-art-7.jpg
+    alt: "Le passage couvert de la cour, fresques de part et d’autre et mur jaune au fond"
+    credit: Nicolas Fagot, Studio 9 · Université Paris Dauphine – PSL
+    source: https://dauphine.psl.eu/dauphine/media-et-communication/article/street-art-une-nouvelle-fresque-murale-habille-les-murs-de-luniversite
+
+videos:
+  dau-clash-7-retour:
+    fichier: dau-clash-7-retour.mp4
+    titre: C’était le DAU’Clash
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DT8fMxVADuN/
+    film: true
+    affiche: 41
+    boucles:
+      salle: { debut: 57.5, duree: 6, alt: "L’amphithéâtre plein, des dizaines de lampes de téléphone levées" }
+      scene: { debut: 14, duree: 6, alt: "Deux rappeurs face à face devant l’écran DAU CLASH, lumière bleue" }
+  dau-clash-8-annonce:
+    fichier: dau-clash-8-annonce.mp4
+    titre: La 8e édition du DAU’Clash arrive
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/Df7wfiIxZfK/
+    film: true
+    affiche: 3
+    boucles:
+      ring: { debut: 1.5, duree: 6, alt: "Un ring de boxe dans une salle en briques, des mains qu’on bande en rouge" }
+  urnight-teaser:
+    fichier: urnight-teaser.mp4
+    titre: URNIGHT IS HERE
+    credit: Montage Babylonviz · L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DUGjQOyDJOA/
+    film: true
+    affiche: 12
+    boucles:
+      cams: { debut: 9, duree: 5, alt: "Six caméras de surveillance filment un supermarché, étiquetées Cam R, Cam G, Cam T" }
+  urnight-retour:
+    fichier: urnight-retour.mp4
+    titre: C’était l’UR’Night
+    credit: Channel 9 Dauphine · L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DWRtJBqEa4S/
+    film: true
+    affiche: 44
+    boucles:
+      vert: { debut: 43, duree: 6, alt: "Le dancefloor de l’UR’Night sous une lumière verte, bras levés" }
+      rouge: { debut: 12, duree: 6, alt: "Deux personnes dansent sous une lumière rouge" }
+  urbns-view-1:
+    fichier: urbns-view-1.mp4
+    titre: URBN’s View #1
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DVBwm6DDJ9U/
+    film: true
+    affiche: 4
+    boucles:
+      apollo: { debut: 0.2, duree: 5, alt: "La scène de l’Apollo Théâtre, un comédien debout face au public" }
+  urbaine-famille:
+    fichier: urbaine-famille.mp4
+    titre: L’urbaine, une grande famille
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DdUDF0Vg09C/
+    film: true
+    affiche: 51
+    boucles:
+      musique: { debut: 20.5, duree: 2.4, alt: "Pôle musique : un clavier, puis des membres qui dansent dans une maison" }
+      mode: { debut: 24.5, duree: 2.9, alt: "Pôle mode : un membre en t-shirt Urbaine dans un entrepôt, un dessin sur tablette" }
+      lifestyle: { debut: 29.4, duree: 2.6, alt: "Pôle lifestyle : deux membres face caméra, de nuit, puis l’entrée de l’Apollo Théâtre" }
+      danse: { debut: 33.4, duree: 2.6, alt: "Pôle danse : deux danseuses dans un hall au pied d’un grand escalier" }
+      event: { debut: 40.0, duree: 2.6, alt: "Pôle event : une soirée dans une salle du campus, des invités assis" }
+  sade-portrait:
+    fichier: sade-portrait.mp4
+    titre: Sade, l’élégance d’une voix intemporelle
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DeCQ69lAyRf/
+    film: true
+    affiche: 8
+    boucles:
+      chambre: { debut: 60, duree: 6, alt: "Une présentatrice assise sur un lit devant des affiches et des vinyles de Sade, lumière rouge" }
+  trailer-2026:
+    fichier: trailer-2026.mp4
+    titre: Trailer 2026–2027
+    credit: Channel 9 Dauphine · L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DePhnztxsAu/
+    film: true
+    affiche: 127
+    boucles:
+      studio: { debut: 41, duree: 5, alt: "Floriane devant des platines et une étagère de casquettes" }
+      victoire: { debut: 125, duree: 5, alt: "Victoire, vice-présidente, un cocktail à la main" }
+      oceanne: { debut: 61, duree: 5, alt: "Océanne fait un signe de la main face caméra" }
+      maria: { debut: 88, duree: 5, alt: "Maria, de nuit devant une grille en fer forgé" }
+  mois-de-rentree:
+    fichier: mois-de-rentree.mp4
+    titre: Merci pour ce mois de divertissement
+    credit: L’Urbaine Paris
+    source: https://www.instagram.com/urbaineparis/reel/DeRp6MigAj3/
+    film: true
+    affiche: 34
+    boucles:
+      terrasse: { debut: 32, duree: 6, alt: "Une soirée sous des guirlandes de lumière, des visages éclairés en orange" }
+  doa-emission:
+    fichier: doa-emission.mp4
+    titre: DOA retrouve L’Urbaine à la rentrée
+    credit: DOA Dauphine On Air
+    source: https://www.instagram.com/dauphine_on_air/reel/DeRwalAouKf/
+    film: false

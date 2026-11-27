@@ -1,0 +1,25 @@
+# Le bureau et la présentation du collectif.
+# Une personne : { prenom, nom, role, photo } — photo = clé d’image de content/medias.yml.
+# Pour un nouveau mandat : changer « mandat », « annonce », la photo de groupe et la liste.
+
+mandat: 2026–2027
+annonce: https://www.instagram.com/urbaineparis/p/DZDZf8agGat/
+photo_groupe: bureau-2026-0
+merci: "Félicitations et bon courage pour cette belle année à venir. Nous remercions l’ancien bureau pour ce beau travail fourni."
+
+bureau:
+  - { prenom: Lucas, nom: Sun, role: Président, photo: bureau-2026-1, succede: Tania Durand-Kundid }
+  - { prenom: Victoire, nom: Lavigne, role: Vice-présidente, photo: bureau-2026-2, succede: Auriane Jobard }
+  - { prenom: Bilal, nom: Gallart, role: Secrétaire général, photo: bureau-2026-3, succede: Nithushan Kokilan }
+  - { prenom: Fatou, nom: Drame Thiam, role: Trésorière, photo: bureau-2026-4, succede: Mathilde Marchessaux }
+
+# Texte de la page Collectif (citations reprises des publications de l’association).
+presentation:
+  - "L’Urbaine Paris est une association et un média étudiant de Paris Dauphine – PSL, fondée en 2013. Elle organise des évènements et publie des formats autour du rap, de la danse, de la mode, de la musique et du street art."
+  - "« L’urbaine c’est une asso qui rassemble des passionnés et des personnalités hyper différentes qui se retrouvent autour d’un même univers. Mais au-delà de nos projets, l’urbaine c’est surtout une grande famille. »"
+film_famille: urbaine-famille
+
+# Les pôles, tels qu’ils apparaissent dans les vidéos de l’association.
+poles: [musique, danse, mode, lifestyle, vidéo]
+
+recrutement: "L’Urbaine recrute sa nouvelle génération à chaque rentrée : les entretiens sont annoncés sur Instagram."

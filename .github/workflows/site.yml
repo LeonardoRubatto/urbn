@@ -1,0 +1,64 @@
+# Génère le site à chaque modification du contenu et le publie sur Cloudflare Pages.
+# Le dépôt ne contient que les sources : les pages et les médias web (dist/) sont produits ici,
+# jamais recommités. Les images et vidéos déjà produites sont gardées en cache : seuls les médias
+# nouveaux ou modifiés sont refaits (ffmpeg n’est installé que dans ce cas).
+#
+# Réglages côté GitHub (Settings → Secrets and variables → Actions) :
+#   secret   CLOUDFLARE_API_TOKEN   jeton Cloudflare avec la permission « Cloudflare Pages : Edit »
+#   secret   CLOUDFLARE_ACCOUNT_ID  identifiant du compte Cloudflare
+#   variable CLOUDFLARE_PROJECT     nom du projet Pages (par défaut : urbn)
+# Côté Cloudflare : couper le déploiement automatique depuis Git du projet (sinon Cloudflare
+# essaie aussi de publier le dépôt brut, sans build).
+name: Générer et publier le site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+      - "media/**"
+      - "src/**"
+      - "scripts/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publication
+  cancel-in-progress: true
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Médias déjà produits (cache)
+        id: medias
+        uses: actions/cache@v4
+        with:
+          path: |
+            dist/assets/img
+            dist/assets/video
+            dist/assets/medias.json
+          key: medias-${{ hashFiles('media/**', 'content/medias.yml', 'scripts/media.mjs') }}
+          restore-keys: medias-
+      - name: Installer ffmpeg (vidéos)
+        if: steps.medias.outputs.cache-hit != 'true'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check
+      - name: Publier sur Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT || 'urbn' }} --branch=main --commit-dirty=true

@@ -1,0 +1,86 @@
+# Réglages généraux du site L’Urbaine Paris.
+# Après toute modification : npm run build puis npm run check (voir GUIDE-PUBLICATION.md).
+
+nom: L’Urbaine Paris
+nom_court: Urbn
+baseline: Association et média étudiant de Paris Dauphine – PSL
+fondation: 2013
+adresse_site: https://urbaine-paris-urbn.rubattoco.chatgpt.site
+# Mettre false le jour où le site est public (retire noindex et ouvre robots.txt).
+prive: true
+
+contact:
+  email: urbnparis@gmail.com
+  instagram: https://www.instagram.com/urbaineparis/
+  instagram_nom: "@urbaineparis"
+
+# Couverture de l’accueil.
+#   plateau → « décor projeté » (URBAINE PARIS empilé sur les vidéos), puis la composition décalée en « À la une ».
+#   decale  → la composition décalée en couverture (titre L’Urbaine., index, plan incliné, affiche qui traverse).
+# L’autre version reste toujours visible sur variante.html (non référencée).
+couverture_style: plateau
+
+# Les cinq pôles, extraits du reel « l’urbaine ✨ c’est une asso qui rassemble… » (étiquettes d’origine).
+poles:
+  titre: Cinq pôles
+  texte: "Musique, mode, lifestyle, danse, évènements : « l’urbaine et ses 5 pôles », comme l’asso les présente elle-même."
+  film: urbaine-famille
+  boucles:
+    - { nom: musique, boucle: urbaine-famille#musique }
+    - { nom: mode, boucle: urbaine-famille#mode }
+    - { nom: lifestyle, boucle: urbaine-famille#lifestyle }
+    - { nom: danse, boucle: urbaine-famille#danse }
+    - { nom: event, boucle: urbaine-famille#event }
+
+# Couverture « decale » : les projets à la une, dans l’ordre de l’index (noms de fichiers de content/projets/).
+# Chaque projet y montre sa boucle (ou son affiche), et son affiche traverse la photo quand il a les deux.
+une: [dau-clash, urnight, sade, fenetre-sur-bois]
+
+# Couverture « plateau » : trois tableaux vidéo qui se succèdent.
+# « boucle » renvoie à une boucle déclarée dans content/medias.yml (vidéo#nom).
+# « gel » est la couleur de lumière du tableau (mesurée sur la vidéo).
+couverture:
+  - titre: DAU’Clash
+    legende: L’amphi 1, téléphones allumés
+    boucle: dau-clash-7-retour#salle
+    gel: "oklch(0.56 0.24 266)"
+    projet: dau-clash
+  - titre: UR’Night
+    legende: Le dancefloor, en vert
+    boucle: urnight-retour#vert
+    gel: "oklch(0.86 0.2 156)"
+    projet: urnight
+  - titre: Rentrée 2026
+    legende: Un mois de divertissement
+    boucle: mois-de-rentree#terrasse
+    gel: "oklch(0.8 0.13 66)"
+    projet: rentree-2026
+
+# Mur multicam de l’accueil : extraits du trailer 2026–2027.
+multicam:
+  titre: Trailer 2026–2027
+  film: trailer-2026
+  texte: "« L’urbaine recrute ‼️ » Le trailer de rentrée présente les pôles et le bureau, un visage après l’autre."
+  boucles:
+    - trailer-2026#studio
+    - trailer-2026#victoire
+    - trailer-2026#oceanne
+    - trailer-2026#maria
+
+# Bandeau de photos qui défile (accueil). Deux lignes, sens opposés.
+bandeau:
+  - [wed-2026-0, bureau-2026-0, fresque-bois-2, wed-2026-4, trailer-2026-couverture, wed-2026-8, street-art-2]
+  - [wed-2026-5, urbaine-famille-couverture, wed-2026-2, fresque-bois-4, mois-de-rentree-couverture, wed-2026-6, wed-2026-3]
+
+# Ordre des familles de projets (page Projets).
+familles:
+  scene: { nom: Scène, texte: "Le DAU’Clash à l’amphi 1." }
+  soiree: { nom: Soirées, texte: "L’UR’Night et les nuits de l’asso." }
+  format: { nom: Formats, texte: "Portraits, entretiens et émissions." }
+  murs: { nom: Murs, texte: "Deux fresques sur le campus." }
+  vie: { nom: Vie de l’asso, texte: "La rentrée, le WED, la famille." }
+
+mentions:
+  editeur: "L’Urbaine Paris, association étudiante de l’Université Paris Dauphine – PSL (coordonnées à confirmer)"
+  direction_publication: "Président de l’association (à confirmer)"
+  hebergeur: "À confirmer"
