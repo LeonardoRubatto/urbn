@@ -86,6 +86,29 @@ Une **boucle** est un extrait muet de 2 à 7 secondes qui tourne en boucle (couv
 
 Les vignettes affichées par Instagram sont petites (360 à 640 px) : ne les utilise pas. Demande les fichiers d’origine à la personne qui a posté, ou à Channel 9 pour leurs tournages. À défaut, la page d’une publication contient l’image en pleine taille (jusqu’à 1440–3000 px) et la vidéo en 720p ; c’est ainsi qu’ont été obtenus les fichiers de `media/` (le lien d’origine de chacun est dans `content/medias.yml`).
 
+## Les réglages du site (`content/site.yml`)
+
+- `nom`, `baseline`, `fondation` : identité, reprise dans la couverture, le pied de page et les métadonnées.
+- `adresse_site` : l’adresse publique (https://urbndauphine.pages.dev ou un futur nom de domaine) ; elle sert aux liens de partage et au sitemap.
+- `prive: true` : le site reste invisible pour Google (`noindex`, `robots.txt` fermé). Mettre `false` le jour de l’ouverture.
+- `contact` : `email`, `instagram`, `instagram_nom`.
+- `couverture_style` : `plateau` (décor projeté en couverture, puis « À la une ») ou `decale` (l’inverse). L’autre version reste visible sur `variante.html`.
+- `couverture` : les trois tableaux vidéo de la couverture, chacun `{ titre, boucle, gel, projet }` (titre court affiché dans les onglets).
+- `une` : les projets de « À la une », dans l’ordre de l’index (noms de fichiers de `content/projets/`).
+- `poles` : `titre`, `texte`, `film` (la vidéo complète), `boucles` (liste de `{ nom, boucle }`, une boucle verticale par pôle).
+- `multicam` : le trailer en mur de caméras : `titre`, `film`, `texte`, `boucles` (quatre boucles).
+- `bandeau` : deux listes d’images (clés de `medias.yml`) qui défilent en sens opposés.
+- `collaborations` : le générique « Avec », chacun `{ nom, role, projet }`. Seulement des collaborations citées dans une publication ou une source.
+- `familles` : les familles de projets et leur nom affiché (elles deviennent les filtres de la page Projets).
+- `mentions` : éditeur, direction de la publication, hébergeur (page Mentions légales).
+
+## L’équipe (`content/equipe.yml`)
+
+- `mandat` (« 2026–2027 »), `annonce` (lien de la publication du bureau), `photo_groupe`, `merci` (phrase reprise de l’annonce).
+- `bureau` : une ligne par personne `{ prenom, nom, role, photo, succede }`. Pour un nouveau mandat : changer `mandat`, `annonce`, la photo de groupe et la liste.
+- `presentation` : les paragraphes de la page Collectif (mots de l’association). `film_famille` : la vidéo de présentation.
+- `poles` : les mots affichés en grand sur la page Collectif. `recrutement` : la phrase de la section « Rejoindre ».
+
 ## Règles
 
 - Les textes reprennent les mots de L’Urbaine (légendes des posts) ou sont validés par le bureau. Un assistant peut intégrer des fichiers, remplir les champs, écrire un texte alternatif factuel ; il n’invente pas de faits, de dates ni de citations.

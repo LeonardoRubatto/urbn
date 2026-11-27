@@ -1,6 +1,8 @@
 # L’Urbaine Paris — site
 
-Site statique de L’Urbaine Paris (association et média étudiant de Paris Dauphine – PSL).
+Site statique de L’Urbaine Paris (association et média étudiant de Paris Dauphine – PSL), en ligne sur https://urbndauphine.pages.dev.
+
+> **Assistant ou IA : lis d’abord `AI-INSTRUCTIONS.md`** (fonctionnement, direction artistique, carte du code, vérifications, pièges connus), puis `GUIDE-PUBLICATION.md`.
 
 - `content/` : tout le contenu (réglages, projets, médias, équipe). C’est ici qu’on publie.
 - `media/` : photos et vidéos d’origine.
