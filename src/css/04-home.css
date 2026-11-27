@@ -19,7 +19,7 @@
 .decor--narrow { display: none; }
 .plateau-tagline { max-width: 30ch; font-size: 0.875rem; line-height: 1.4; color: var(--gris); text-shadow: 0 1px 14px oklch(0 0 0 / 0.6); }
 /* Ordinateur : au-dessus des onglets, à droite, hors du décor. */
-.plateau-tagline--d { position: absolute; z-index: 3; right: var(--gutter); bottom: calc(var(--s-6) + 64px); text-align: right; }
+.plateau-tagline--d { position: absolute; z-index: 3; right: var(--gutter); bottom: calc(var(--s-6) + 56px); text-align: right; }
 .plateau-tagline--m { display: none; }
 
 .plateau-date {
@@ -34,20 +34,13 @@
 .plateau-date-what span { color: var(--gris); font-size: 0.9375rem; }
 .plateau-date:hover .plateau-date-day { letter-spacing: 0.02em; }
 
-/* Onglets en barres de story : une barre qui se remplit, un titre étroit, pas de boîte. */
-.plateau-index { position: absolute; z-index: 3; right: var(--gutter); bottom: var(--s-6); display: flex; gap: var(--s-3); width: min(46vw, 560px); }
-.plateau-tab {
-  flex: 1; min-height: 48px; padding: var(--s-3) 0 0; border: 0; background: none; cursor: pointer; text-align: left;
-  color: var(--gris); display: grid; gap: var(--s-3); align-content: start;
-}
-.plateau-tab i { display: block; height: 3px; border-radius: 2px; background: oklch(1 0 0 / 0.26); overflow: hidden; position: relative; }
-.plateau-tab i::after { content: ""; position: absolute; inset: 0; background: var(--blanc); transform: scaleX(0); transform-origin: left; }
-.plateau-tab span { font-size: clamp(1rem, 0.7rem + 0.7vw, 1.375rem); font-weight: 900; text-transform: uppercase; font-variation-settings: "wdth" 62; line-height: 1; letter-spacing: 0.01em; text-shadow: 0 1px 14px oklch(0 0 0 / 0.55); transition: color 270ms var(--ease-out), font-variation-settings 480ms var(--ease-out); white-space: nowrap; }
-.plateau-tab:hover span, .plateau-tab:focus-visible span { color: var(--gel); font-variation-settings: "wdth" 80; }
-.plateau-tab[aria-pressed="true"] span { color: var(--blanc); }
-.plateau-tab[aria-pressed="true"] i::after { animation: tab-run var(--scene-time, 7000ms) linear forwards; background: var(--gel); }
-.plateau[data-paused] .plateau-tab[aria-pressed="true"] i::after { animation-play-state: paused; }
-@keyframes tab-run { to { transform: scaleX(1); } }
+/* Onglets : des titres étroits, sans boîte ni barre ; l’onglet de la vidéo en cours prend sa lumière. */
+.plateau-index { position: absolute; z-index: 3; right: var(--gutter); bottom: var(--s-6); display: flex; gap: var(--s-6); }
+.plateau-tab { min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; color: var(--gris); }
+.plateau-tab i { display: none; }
+.plateau-tab span { font-size: clamp(1rem, 0.7rem + 0.7vw, 1.375rem); font-weight: 900; text-transform: uppercase; font-variation-settings: "wdth" 62; line-height: 1; letter-spacing: 0.01em; text-shadow: 0 1px 14px oklch(0 0 0 / 0.55); transition: color 600ms var(--ease-out), font-variation-settings 480ms var(--ease-out); white-space: nowrap; }
+.plateau-tab:hover span, .plateau-tab:focus-visible span { color: var(--blanc); font-variation-settings: "wdth" 80; }
+.plateau-tab[aria-pressed="true"] span { color: color-mix(in oklch, var(--gel) 78%, white 22%); }
 
 /* ---------- À l’affiche ---------- */
 .affiche { position: relative; padding-block: var(--s-10); overflow: hidden; }
@@ -133,7 +126,7 @@
   .plateau-tagline--m { display: block; max-width: 26ch; margin-top: var(--s-3); font-size: 0.8125rem; }
   .plateau-date { bottom: 104px; max-width: 80vw; padding: 0; }
   .plateau-date-day { font-size: clamp(4.5rem, 24vw, 6.5rem); }
-  .plateau-index { left: var(--gutter); right: var(--gutter); width: auto; bottom: var(--s-5); gap: var(--s-3); }
+  .plateau-index { left: var(--gutter); right: var(--gutter); bottom: var(--s-5); gap: var(--s-5); }
   .plateau-tab span { font-size: 1rem; }
 
   .affiche { padding-block: var(--s-9); }

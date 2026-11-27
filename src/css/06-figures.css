@@ -72,3 +72,8 @@
   .figure--left { left: -10vw; }
   .figure-beam { width: 120vw; }
 }
+
+/* ---------- Changements de mise en page en douceur (src/js/11-smooth.js) ---------- */
+.smooth-inner { display: block; }
+.smooth-word { display: inline-block; }
+[data-smooth] { overflow: visible; }
