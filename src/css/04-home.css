@@ -1,5 +1,5 @@
 /* ---------- Couverture : le plateau ---------- */
-.plateau { position: relative; height: 100svh; min-height: 560px; overflow: hidden; isolation: isolate; background: var(--salle-bas); transition: --gel var(--gel-fade) var(--ease-out); }
+.plateau { position: relative; height: 100vh; height: 100dvh; min-height: 520px; overflow: hidden; isolation: isolate; background: var(--salle-bas); transition: --gel var(--gel-fade) var(--ease-out); }
 .plateau-scenes, .plateau-scene { position: absolute; inset: 0; }
 .plateau-scene { opacity: 0; transition: opacity 900ms var(--ease-out); }
 .plateau-scene.is-current { opacity: 1; }

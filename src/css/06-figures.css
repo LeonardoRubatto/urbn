@@ -17,19 +17,22 @@
 .figure--right .figure-beam--tl { left: auto; right: 40vw; }
 .figure--left .figure-beam--tr { right: auto; left: 40vw; }
 
-/* ---------- Le mur « Avec » ---------- */
+/* ---------- « Avec » : un générique de film ----------
+   Les noms se suivent comme un texte continu, de tailles inégales, décalé à droite (rien d’aligné
+   en grille) ; le rôle suit chaque nom en petit. Deux ou trois noms prennent la lumière de leur projet. */
 .avec { padding-block: var(--s-9); border-top: 1px solid var(--trait); }
 .avec-head { display: grid; grid-template-columns: 5fr 5fr; gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
 .avec-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
-.avec-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-4) clamp(24px, 3vw, 56px); }
-.avec-list li { display: block; }
-.avec-list a { text-decoration: none; display: block; }
-.avec-name { display: block; font-size: clamp(1.75rem, 0.9rem + 2.6vw, 3.75rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; font-variation-settings: "wdth" var(--w, 100); color: var(--blanc); transition: color 270ms var(--ease-out); }
-.avec-role { display: block; margin-top: 6px; font-size: 0.8125rem; color: var(--gris); max-width: 32ch; }
+.avec-list { list-style: none; padding: 0; margin: 0 0 0 22%; max-width: 74%; line-height: 1.02; }
+.avec-list li { display: inline; }
+.avec-list a { text-decoration: none; }
+.avec-name { font-weight: 900; text-transform: uppercase; font-variation-settings: "wdth" var(--w, 100); color: var(--blanc); transition: color 270ms var(--ease-out); font-size: clamp(1.75rem, 0.9rem + 2.4vw, 3.5rem); letter-spacing: -0.01em; }
+.avec-role { white-space: nowrap; font-size: 0.8125rem; font-weight: 600; color: var(--gris); margin: 0 0.9em 0 0.4em; letter-spacing: 0; text-transform: none; font-variation-settings: "wdth" 100; }
+.avec-list li:nth-child(5n+1) .avec-name { font-size: clamp(2.25rem, 1rem + 3.6vw, 5rem); }
+.avec-list li:nth-child(5n+3) .avec-name { font-size: clamp(2rem, 1rem + 3vw, 4.25rem); }
+.avec-list li:nth-child(5n+4) .avec-name { font-size: clamp(1.5rem, 0.9rem + 1.8vw, 2.75rem); }
+.avec-list li:nth-child(4) .avec-name, .avec-list li:nth-child(8) .avec-name { color: color-mix(in oklch, var(--gel) 80%, white 20%); }
 .avec-list a:hover .avec-name, .avec-list a:focus-visible .avec-name { color: var(--gel); }
-/* Touches de couleur sporadiques : un nom sur trois prend la lumière de son projet. */
-.avec-list li:nth-child(3n+2) .avec-name { color: color-mix(in oklch, var(--gel) 82%, white 18%); }
-.avec-list li:nth-child(3n+2) .avec-role::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gel); margin-right: 6px; vertical-align: 1px; }
 
 /* ---------- Cinq pôles : entrée en rideau (ordinateur) ----------
    Grammaire « section-transitions » du design system : l’état caché n’existe qu’avec JavaScript,
@@ -62,11 +65,12 @@
   .tableaux-head, .poles-head { margin-bottom: var(--s-6); }
   .bureau-head { margin-bottom: var(--s-6); }
   .avec-head { grid-template-columns: 1fr; gap: var(--s-3); }
-  /* Téléphone : deux colonnes, noms étroits de même largeur, un filet au-dessus de chacun. */
-  .avec-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5) var(--s-4); }
-  .avec-list li { border-top: 1px solid var(--trait); padding-top: var(--s-3); }
-  .avec-name { font-size: clamp(1.25rem, 6.4vw, 1.625rem); font-variation-settings: "wdth" 70; line-height: 1; }
-  .avec-role { font-size: 0.75rem; line-height: 1.35; }
+  .avec-list { margin-left: 0; max-width: none; line-height: 1.08; }
+  .avec-name { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .avec-list li:nth-child(5n+1) .avec-name { font-size: clamp(2rem, 10vw, 2.75rem); }
+  .avec-list li:nth-child(5n+3) .avec-name { font-size: clamp(1.75rem, 8.5vw, 2.375rem); }
+  .avec-list li:nth-child(5n+4) .avec-name { font-size: clamp(1.25rem, 5.6vw, 1.625rem); }
+  .avec-role { font-size: 0.75rem; }
   .figure-word span { font-size: calc(26vw * 100 / var(--w, 100)); }
   .figure--right { right: -14vw; }
   .figure--left { left: -10vw; }
