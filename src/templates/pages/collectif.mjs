@@ -1,5 +1,5 @@
 // Page Collectif : présentation, la famille en vidéo, les pôles, le bureau, le contact.
-import { esc, link, picture, filmButton, decor, bureau, contact } from "../components.mjs";
+import { esc, link, picture, filmButton, decor, bureau, contact, collaborations } from "../components.mjs";
 
 export function collectif(ctx) {
   const e = ctx.equipe;
@@ -22,6 +22,7 @@ export function collectif(ctx) {
   </div>
 </section>
 ${bureau(ctx)}
+${collaborations(ctx)}
 ${contact(ctx)}`;
 }
 

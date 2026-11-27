@@ -7,7 +7,7 @@ Lis `GUIDE-PUBLICATION.md`, puis un fichier existant du même type, avant toute 
 | Ajouter ou corriger un projet | `content/projets/<nom>.md` (modèle : `_modeles/projet.md`) |
 | Ajouter une photo, une vidéo, une boucle, un film | fichier dans `media/` + entrée dans `content/medias.yml` |
 | Annoncer un évènement | `date`, `lieu`, `edition` du projet |
-| Couverture, « À la une », pôles, trailer, bandeau | `content/site.yml` |
+| Couverture, « À la une », pôles, trailer, bandeau, mur « Avec » | `content/site.yml` |
 | Bureau, présentation, recrutement | `content/equipe.yml` |
 
 ## Avant d’agir : demande ce qui manque

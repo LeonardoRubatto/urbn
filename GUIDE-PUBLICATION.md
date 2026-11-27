@@ -10,7 +10,9 @@ Le site est un dossier de fichiers statiques. Le contenu vit dans des fichiers s
 | Ajouter un extrait vidéo en boucle | `boucles` de la vidéo dans `content/medias.yml` | |
 | Rendre une vidéo lisible en entier sur le site | `film: true` dans `content/medias.yml` | |
 | Changer les publications « À la une » | `une` dans `content/site.yml` | |
-| Changer les trois tableaux de la couverture | `couverture` dans `content/site.yml` | |
+| Changer les trois tableaux de la couverture | `couverture` dans `content/site.yml` (titre, boucle, gel, projet) | |
+| Ajouter un collaborateur au mur « Avec » | `collaborations` dans `content/site.yml` (nom, rôle, projet) | |
+| Le calendrier de la page Projets | rien : il se remplit avec les `date` des projets | |
 | Choisir la couverture (décor projeté ou composition décalée) | `couverture_style` dans `content/site.yml` | |
 | Changer les pôles, le trailer, le bandeau photo | `poles`, `multicam`, `bandeau` dans `content/site.yml` | |
 | Nouveau bureau | `content/equipe.yml` | `media/images/` |

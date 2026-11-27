@@ -64,6 +64,13 @@ export function decor(text, { tag = "p", widths = [62, 125, 88, 104], cls = "", 
   return `<${tag} class="decor${cls ? " " + cls : ""}"${id ? ` id="${id}"` : ""} data-decor>${lines}</${tag}>`;
 }
 
+// Figure de fond (DA « URBAINE PARIS » empilé sous un projecteur) : mot répété à largeurs variables,
+// très discret, posé d’un côté et coupé par la section ; faisceau facultatif. Purement décoratif.
+//   side : "left" | "right" ; beam : "tl" | "tr" | "bl" | "br" | null
+export function figure(text, { side = "right", beam = null, widths = [125, 62, 96], top = "0" } = {}) {
+  return `<div class="figure figure--${side}" aria-hidden="true" style="--fig-top:${top}">${beam ? `<i class="figure-beam figure-beam--${beam}"></i>` : ""}<span class="figure-word">${widths.map((w) => `<span style="--w:${w}">${esc(text)}</span>`).join("")}</span></div>`;
+}
+
 // Prénom NOM, à la manière des portraits publiés par L’Urbaine.
 export const personName = (p) => `<span class="name"><span class="name-first">${esc(p.prenom)}</span> <span class="name-last">${esc(p.nom)}</span></span>`;
 
@@ -71,7 +78,8 @@ export const gelStyle = (gel) => gel ? ` style="--gel:${esc(gel)}"` : "";
 
 export function bureau(ctx, { headingTag = "h2", id = "bureau" } = {}) {
   const e = ctx.equipe;
-  return `<section class="bureau" id="${id}" aria-labelledby="${id}-titre">
+  return `<section class="bureau has-figure" id="${id}" aria-labelledby="${id}-titre">
+  ${figure("Bureau", { side: "left", beam: "tr", widths: [62, 125], top: "38%" })}
   <div class="wrap">
     <header class="bureau-head"><${headingTag} id="${id}-titre" class="section-title">Le bureau</${headingTag}><p class="bureau-mandat">${esc(e.mandat)}</p></header>
     <ul class="bureau-list">
@@ -86,9 +94,30 @@ export function bureau(ctx, { headingTag = "h2", id = "bureau" } = {}) {
 </section>`;
 }
 
+// Le mur « Avec » : chaque nom à une largeur d’Archivo différente, éclairé à la couleur de son projet au survol.
+export function collaborations(ctx, { id = "avec" } = {}) {
+  const list = ctx.site.collaborations || [];
+  if (!list.length) return "";
+  const widths = [62, 112, 80, 125, 70, 96, 88, 118, 66, 104];
+  return `<section class="avec has-figure" id="${id}" aria-labelledby="${id}-titre">
+  ${figure("Avec", { side: "right", widths: [125, 70, 100], top: "8%" })}
+  <div class="wrap">
+    <header class="avec-head"><h2 id="${id}-titre" class="section-title">Avec</h2><p>Les vidéastes, artistes, médias et partenaires qui ont fait les projets de L’Urbaine.</p></header>
+    <ul class="avec-list" role="list">
+      ${list.map((c, i) => {
+        const p = ctx.projets.find((x) => x.slug === c.projet);
+        const inner = `<span class="avec-name" style="--w:${widths[i % widths.length]}">${esc(c.nom)}</span><span class="avec-role">${esc(c.role)}</span>`;
+        return `<li${p ? ` style="--gel:${esc(p.gel)}"` : ""}>${p && p.page ? `<a href="${p.href}" data-gel="${esc(p.gel)}">${inner}</a>` : inner}</li>`;
+      }).join("")}
+    </ul>
+  </div>
+</section>`;
+}
+
 export function contact(ctx, { id = "contact" } = {}) {
   const c = ctx.site.contact;
-  return `<section class="contact" id="${id}" aria-labelledby="${id}-titre">
+  return `<section class="contact has-figure" id="${id}" aria-labelledby="${id}-titre">
+  ${figure("Urbaine Paris", { side: "right", beam: "bl", widths: [62, 125, 82, 108], top: "-6%" })}
   <div class="wrap contact-grid">
     <h2 id="${id}-titre" class="contact-title"><span>Rejoindre</span> <span>l’Urbaine</span></h2>
     <div class="contact-copy">

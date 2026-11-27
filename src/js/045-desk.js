@@ -13,6 +13,7 @@ if (pressTabs) {
     activeIndex = index;
     tabs.forEach((tab, i) => { tab.setAttribute("aria-selected", String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
     panels.forEach((panel, i) => { panel.hidden = i !== index; panel.classList.toggle("is-printing", i === index && !reduceMotion.matches); });
+    desk.querySelectorAll("[data-action-for]").forEach((el) => { el.hidden = el.dataset.actionFor !== panels[index].id; });
     setGel(panels[index].dataset.gel, desk);
     refreshLoops(panels[index]);
     panels[index].querySelectorAll("[data-loop]").forEach(startLoop);

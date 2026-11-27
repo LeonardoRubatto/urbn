@@ -33,6 +33,15 @@ function startLoop(el) {
   if (play) play.then(() => el.classList.add("is-playing")).catch(() => {});
 }
 
+// Prépare une boucle sans la lancer (la suivante dans une séquence) : elle démarre ensuite sans attente.
+function primeLoop(el) {
+  if (reduceMotion.matches || saveData) return;
+  const video = loopVideo(el);
+  if (!video || video.src) return;
+  video.preload = "auto";
+  video.src = smallScreen.matches ? video.dataset.sd : video.dataset.hd;
+}
+
 function stopLoop(el) {
   const video = loopVideo(el);
   if (video && !video.paused) video.pause();
@@ -120,12 +129,12 @@ function reshapeDecor(decor, widths) {
 
 /* src/js/04-plateau.js */
 // Couverture : trois tableaux vidéo qui se succèdent. Le gel et les largeurs du décor changent avec eux.
-// Pause : bouton icône (nom accessible) ; en mouvement réduit, rien ne défile.
+// Le défilement s’arrête tant que le pointeur ou le focus clavier est sur les onglets ; en mouvement réduit, rien ne défile.
 const plateau = document.querySelector("[data-plateau]");
 if (plateau) {
   const scenes = [...plateau.querySelectorAll("[data-scene]")];
   const tabs = [...plateau.querySelectorAll("[data-scene-tab]")];
-  const pause = plateau.querySelector("[data-pause]");
+  const index = plateau.querySelector(".plateau-index");
   const decors = [...plateau.querySelectorAll("[data-decor]")];
   const shapes = [[62, 125, 82, 108], [125, 70, 100, 62], [88, 62, 125, 76]];
   const SCENE_TIME = 7000;
@@ -160,16 +169,16 @@ if (plateau) {
   }
 
   tabs.forEach((tab, i) => tab.addEventListener("click", () => show(i, { user: true })));
-  pause?.addEventListener("click", () => {
-    paused = !paused;
-    pause.setAttribute("aria-pressed", String(paused));
-    pause.setAttribute("aria-label", paused ? "Relancer les vidéos" : "Mettre les vidéos en pause");
+  const hold = (on) => {
+    paused = on || reduceMotion.matches;
     plateau.toggleAttribute("data-paused", paused);
-    scenes.forEach((s) => s.querySelectorAll("[data-loop]").forEach((l) => (l.dataset.held = String(paused))));
-    paused ? pauseLoops(plateau) : refreshLoops(scenes[current]);
     schedule();
-  });
-  if (reduceMotion.matches) { plateau.toggleAttribute("data-paused", true); pause.hidden = true; }
+  };
+  index.addEventListener("pointerenter", () => hold(true));
+  index.addEventListener("pointerleave", () => hold(false));
+  index.addEventListener("focusin", () => hold(true));
+  index.addEventListener("focusout", (e) => { if (!index.contains(e.relatedTarget)) hold(false); });
+  if (reduceMotion.matches) plateau.toggleAttribute("data-paused", true);
 
   // La couverture ne tourne que si elle est visible.
   new IntersectionObserver(([entry]) => {
@@ -193,6 +202,7 @@ if (pressTabs) {
     activeIndex = index;
     tabs.forEach((tab, i) => { tab.setAttribute("aria-selected", String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
     panels.forEach((panel, i) => { panel.hidden = i !== index; panel.classList.toggle("is-printing", i === index && !reduceMotion.matches); });
+    desk.querySelectorAll("[data-action-for]").forEach((el) => { el.hidden = el.dataset.actionFor !== panels[index].id; });
     setGel(panels[index].dataset.gel, desk);
     refreshLoops(panels[index]);
     panels[index].querySelectorAll("[data-loop]").forEach(startLoop);
@@ -213,27 +223,58 @@ if (pressTabs) {
 
 /* src/js/05-gel.js */
 // Les tableaux de projets : en défilant, la page prend la couleur de lumière du projet lu
-// et la scène fixe (ordinateur) montre son média. Sur téléphone, chaque projet a son média en ligne.
+// et la scène fixe (ordinateur) montre son média. Des barres façon story Instagram, une par projet,
+// se remplissent avec le défilement (mécanique « guided-steps » du design system : l’état est une
+// fonction de la position, sans file d’attente). La vidéo du projet suivant est préparée à l’avance.
+// Sur téléphone, chaque projet a son média en ligne.
 const tableaux = document.querySelector("[data-tableaux]");
 if (tableaux && "IntersectionObserver" in window) {
   const items = [...tableaux.querySelectorAll("[data-tableau]")];
   const frames = [...tableaux.querySelectorAll("[data-frame]")];
+  const bars = [...tableaux.querySelectorAll("[data-bar] i")];
+  const nowTitle = tableaux.querySelector("[data-now-title]");
+  const nowWhen = tableaux.querySelector("[data-now-when]");
+  const stage = tableaux.querySelector(".tableaux-stage");
   let active = 0;
+  let queued = false;
+
   const select = (index) => {
-    if (index === active && tableaux.dataset.lit) return;
+    if (index < 0 || (index === active && tableaux.dataset.lit !== undefined)) return;
     frames[active]?.classList.remove("is-current");
+    items[active]?.classList.remove("is-active");
     if (frames[active]) pauseLoops(frames[active]);
     active = index;
     tableaux.dataset.lit = "";
+    items[active].classList.add("is-active");
     frames[active]?.classList.add("is-current");
     if (frames[active]) refreshLoops(frames[active]);
+    if (frames[active + 1]) frames[active + 1].querySelectorAll("[data-loop]").forEach(primeLoop);
+    if (nowTitle) { nowTitle.textContent = items[active].dataset.title; nowWhen.textContent = items[active].dataset.when; }
     setGel(items[active].dataset.gel, tableaux);
     setGel(items[active].dataset.gel);
+    paint();
   };
+
+  // Barres : passées pleines, courante au prorata du défilement, suivantes vides.
+  function paint() {
+    queued = false;
+    if (!bars.length || !stage || getComputedStyle(stage).display === "none") return;
+    const r = items[active].getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (innerHeight / 2 - r.top) / r.height));
+    bars.forEach((bar, i) => bar.style.setProperty("--p", i < active ? 1 : i > active ? 0 : p.toFixed(3)));
+  }
+  addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
+
   const io = new IntersectionObserver((entries) => {
     for (const entry of entries) if (entry.isIntersecting) select(items.indexOf(entry.target));
   }, { rootMargin: "-45% 0px -45% 0px" });
   items.forEach((item) => io.observe(item));
+
+  // La scène ne garde sa vidéo en lecture que si la section est à l’écran.
+  new IntersectionObserver(([entry]) => {
+    if (!frames[active]) return;
+    entry.isIntersecting ? refreshLoops(frames[active]) : pauseLoops(frames[active]);
+  }).observe(tableaux);
 }
 
 // Toute autre section qui porte sa propre lumière (data-gel-section) l’allume en passant.
@@ -243,6 +284,22 @@ if ("IntersectionObserver" in window) {
   }, { rootMargin: "-50% 0px -50% 0px" });
   document.querySelectorAll("[data-gel-section]").forEach((s) => lit.observe(s));
 }
+
+/* src/js/055-reveal.js */
+// Entrées de sections (grammaire « section-transitions » du design system) : on observe la section
+// [data-reveal] et on lui ajoute .is-in une fois atteinte ; le CSS anime ses enfants. Une seule fois.
+// Le focus clavier ou une ancre révèlent immédiatement (sans transition).
+document.querySelectorAll("[data-reveal]").forEach((section) => {
+  section.querySelectorAll(".pole").forEach((el, i) => el.style.setProperty("--i", i));
+  if (!("IntersectionObserver" in window)) { section.classList.add("is-in"); return; }
+  const io = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    section.classList.add("is-in");
+    io.disconnect();
+  }, { rootMargin: "0px 0px -16% 0px" });
+  io.observe(section);
+  section.addEventListener("focusin", () => { section.classList.add("is-instant", "is-in"); io.disconnect(); }, { once: true });
+});
 
 /* src/js/06-film.js */
 // Salle de projection : le film s’ouvre depuis sa vignette (450 ms), le son est autorisé

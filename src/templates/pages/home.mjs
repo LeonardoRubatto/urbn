@@ -1,6 +1,6 @@
 // Accueil : couverture (trois tableaux), la prochaine date, les tableaux de projets,
 // le trailer en multicam, la bande photo, le bureau, le contact.
-import { esc, link, picture, loop, cover, filmButton, ticket, decor, bureau, contact, gelStyle } from "../components.mjs";
+import { esc, link, picture, loop, cover, filmButton, ticket, decor, bureau, contact, collaborations, figure, gelStyle } from "../components.mjs";
 import { dateLongue, dateCourte, moisAnnee } from "../../../scripts/lib/content.mjs";
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -15,17 +15,18 @@ function couverture(ctx, next) {
     ${scenes.map((s, i) => `<div class="plateau-scene${i ? "" : " is-current"}" data-scene data-gel="${esc(s.gel)}">${loop(ctx, s.boucle, { eager: !i, decorative: i > 0, sizes: "100vw", cls: "loop--cover" })}</div>`).join("")}
   </div>
   <div class="plateau-light" aria-hidden="true"></div>
-  ${decor("Urbaine Paris", { tag: "h1", id: "titre-site", widths: [62, 125, 82, 108], cls: "decor--plateau decor--wide" })}
-  ${decor("Urbaine", { widths: [72, 125, 62, 100], cls: "decor--plateau decor--narrow" }).replace('<p class', '<p aria-hidden="true" class')}
-  <p class="plateau-tagline">${esc(ctx.site.baseline)} · depuis ${ctx.site.fondation}</p>
+  <div class="plateau-head">
+    ${decor("Urbaine Paris", { tag: "h1", id: "titre-site", widths: [62, 125, 82, 108], cls: "decor--plateau decor--wide" })}
+    ${decor("Urbaine", { widths: [72, 125, 62, 100], cls: "decor--plateau decor--narrow" }).replace('<p class', '<p aria-hidden="true" class')}
+    <p class="plateau-tagline">${esc(ctx.site.baseline)} · depuis ${ctx.site.fondation}</p>
+  </div>
   ${next ? `<a class="plateau-date" href="${next.href}"${gelStyle(next.gel)}>
     <span class="plateau-date-label">Prochaine date</span>
     <span class="plateau-date-day">${pad(next.date.date.getDate())}.${pad(next.date.date.getMonth() + 1)}</span>
     <span class="plateau-date-what"><strong>${esc(next.titre)}${next.edition ? ` · ${esc(next.edition)}` : ""}</strong><span>${next.date.heure ? esc(next.date.heure) + " · " : ""}${esc(next.lieu || "")}</span></span>
   </a>` : ""}
   <div class="plateau-index" role="group" aria-label="Tableaux de la couverture">
-    ${scenes.map((s, i) => `<button type="button" class="plateau-tab" aria-pressed="${i === 0}" data-scene-tab style="--gel:${esc(s.gel)}"><strong>${esc(s.titre)}</strong><span>${esc(s.legende)}</span><i aria-hidden="true"></i></button>`).join("")}
-    <button type="button" class="plateau-pause" aria-label="Mettre les vidéos en pause" aria-pressed="false" data-pause><i aria-hidden="true"></i></button>
+    ${scenes.map((s, i) => `<button type="button" class="plateau-tab" aria-pressed="${i === 0}" data-scene-tab style="--gel:${esc(s.gel)}"><i aria-hidden="true"></i><span>${esc(s.titre)}</span></button>`).join("")}
   </div>
 </section>`;
 }
@@ -39,14 +40,19 @@ function couvertureDecalee(ctx, { asHero = true } = {}) {
     return key ? picture(ctx, key, { sizes: "64px", alt: "" }) : "";
   };
   const meta = (p) => p.aVenir ? `${dateCourte(p.date)}${p.date.heure ? ` · ${p.date.heure}` : ""}` : [p.genre, p.date_affichee || (p.date?.precise ? moisAnnee(p.date) : p.date?.annee)].filter(Boolean).join(" · ");
+  const h = asHero ? "h2" : "h3";
+  const label = (p) => p.aVenir ? `Infos du ${esc(p.titre)}` : `Ouvrir ${esc(p.titre)}`;
   const head = asHero
     ? `<div class="desk-title"><h1 id="titre-site">L’Urbaine<span>.</span></h1><p>Média étudiant<br>Paris Dauphine – PSL</p></div>`
     : `<div class="desk-title"><h2 id="titre-une">À la une<span>.</span></h2><p>Quatre publications<br>de L’Urbaine</p></div>`;
   return `<section class="desk wrap${asHero ? " desk--hero" : ""}" aria-labelledby="${asHero ? "titre-site" : "titre-une"}" data-desk style="--gel:${esc(une[0]?.gel || "")}">
   ${head}
   <div class="desk-body">
+    <div class="desk-rail">
     <div class="press-tabs" role="tablist" aria-label="Publications à la une">
       ${une.map((p, i) => `<button type="button" id="onglet-${p.slug}" role="tab" aria-selected="${i === 0}" aria-controls="planche-${p.slug}" tabindex="${i ? -1 : 0}" style="--gel:${esc(p.gel)}"><span class="desk-tab-text"><span>${esc(fam(ctx, p))}</span><strong>${esc(p.titre)}</strong></span><span class="desk-tab-thumb" aria-hidden="true">${thumb(p)}</span></button>`).join("")}
+    </div>
+    <div class="desk-actions">${une.map((p, i) => `<div data-action-for="planche-${p.slug}"${i ? " hidden" : ""}>${ticket(p.href, label(p))}</div>`).join("")}</div>
     </div>
     <div class="dispatch-panels">
       ${une.map((p, i) => {
@@ -59,9 +65,9 @@ function couvertureDecalee(ctx, { asHero = true } = {}) {
           ${src ? `<a class="dispatch-credit" href="${esc(src.source)}" rel="noopener">${esc(src.credit)}</a>` : ""}
         </div>
         <div class="dispatch-caption">
-          <div><h2>${esc(p.titre)}</h2><p>${esc(meta(p))}</p></div>
+          <div><${h} class="dispatch-title">${esc(p.titre)}</${h}><p>${esc(meta(p))}</p></div>
           <p class="dispatch-deck">${esc(p.resume)}</p>
-          ${ticket(p.href, p.aVenir ? `Infos du ${esc(p.titre)}` : "Ouvrir le dossier", "dispatch-ticket")}
+          ${ticket(p.href, label(p), "dispatch-ticket")}
         </div>
       </section>`;
       }).join("")}
@@ -97,9 +103,11 @@ function tableaux(ctx, list) {
     <div class="tableaux-body">
       <div class="tableaux-stage" aria-hidden="true">
         ${list.map((p, i) => `<div class="tableaux-frame${i ? "" : " is-current"}" data-frame>${cover(ctx, p, { sizes: "(min-width: 900px) 54vw, 92vw", decorative: true })}</div>`).join("")}
+        <div class="tableaux-bars">${list.map(() => `<span data-bar><i></i></span>`).join("")}</div>
+        <p class="tableaux-now"><span data-now-title>${esc(list[0]?.titre || "")}</span><span data-now-when>${esc(list[0] ? when(list[0]) : "")}</span></p>
       </div>
       <ol class="tableaux-list" role="list">
-        ${list.map((p, i) => `<li class="tableau" data-tableau data-gel="${esc(p.gel)}"${gelStyle(p.gel)}>
+        ${list.map((p, i) => `<li class="tableau${i ? "" : " is-active"}" data-tableau data-gel="${esc(p.gel)}" data-title="${esc(p.titre)}" data-when="${esc(when(p))}"${gelStyle(p.gel)}>
           <div class="tableau-media">${cover(ctx, p, { sizes: "92vw" })}</div>
           <p class="tableau-meta"><span>${esc(fam(ctx, p))}</span><span>${esc(when(p))}</span></p>
           <h3 class="tableau-title"><a href="${p.href}" data-gel="${esc(p.gel)}">${esc(p.titre)}</a></h3>
@@ -141,7 +149,8 @@ function bande(ctx) {
 function poles(ctx) {
   const p = ctx.site.poles;
   if (!p?.boucles?.length) return "";
-  return `<section class="poles-reel" aria-labelledby="titre-poles-reel">
+  return `<section class="poles-reel has-figure" aria-labelledby="titre-poles-reel" data-reveal>
+  ${figure("Urbaine", { side: "right", beam: "tl", widths: [125, 62, 100, 76], top: "18%" })}
   <div class="wrap">
     <header class="poles-head"><h2 id="titre-poles-reel" class="section-title">${esc(p.titre)}</h2><p>${esc(p.texte)}</p>${p.film ? filmButton(ctx, p.film, { label: "Voir le reel", cls: "film--inline" }) : ""}</header>
     <ul class="poles-strip" role="list">
@@ -157,5 +166,5 @@ export function home(ctx, { hero = ctx.site.couverture_style } = {}) {
   // plateau : décor projeté en couverture, puis la composition décalée devenue « À la une ».
   // decale  : la composition décalée en couverture (titre L’Urbaine.), puis l’affiche du prochain évènement.
   const top = hero === "plateau" ? couverture(ctx, next) + couvertureDecalee(ctx, { asHero: false }) : couvertureDecalee(ctx) + affiche(ctx, next);
-  return top + poles(ctx) + tableaux(ctx, list) + multicam(ctx) + bande(ctx) + bureau(ctx) + contact(ctx);
+  return top + poles(ctx) + tableaux(ctx, list) + multicam(ctx) + bande(ctx) + collaborations(ctx) + bureau(ctx) + contact(ctx);
 }

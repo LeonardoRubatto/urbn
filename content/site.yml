@@ -41,17 +41,14 @@ une: [dau-clash, urnight, sade, fenetre-sur-bois]
 # « gel » est la couleur de lumière du tableau (mesurée sur la vidéo).
 couverture:
   - titre: DAU’Clash
-    legende: L’amphi 1, téléphones allumés
     boucle: dau-clash-7-retour#salle
     gel: "oklch(0.56 0.24 266)"
     projet: dau-clash
   - titre: UR’Night
-    legende: Le dancefloor, en vert
     boucle: urnight-retour#vert
     gel: "oklch(0.86 0.2 156)"
     projet: urnight
   - titre: Rentrée 2026
-    legende: Un mois de divertissement
     boucle: mois-de-rentree#terrasse
     gel: "oklch(0.8 0.13 66)"
     projet: rentree-2026
@@ -71,6 +68,21 @@ multicam:
 bandeau:
   - [wed-2026-0, bureau-2026-0, fresque-bois-2, wed-2026-4, trailer-2026-couverture, wed-2026-8, street-art-2]
   - [wed-2026-5, urbaine-famille-couverture, wed-2026-2, fresque-bois-4, mois-de-rentree-couverture, wed-2026-6, wed-2026-3]
+
+# Le mur « Avec » (accueil et page Collectif) : les personnes et structures qui ont travaillé avec L’Urbaine.
+# { nom, role, projet } — projet = nom de fichier de content/projets/ (le nom renvoie à sa page).
+# N’ajouter que des collaborations citées dans une publication ou une source.
+collaborations:
+  - { nom: Channel 9 Dauphine, role: "Tournage de l’UR’Night et du trailer 2026–2027", projet: urnight }
+  - { nom: Babylonviz, role: "Montage du teaser de l’UR’Night", projet: urnight }
+  - { nom: PAT Studio, role: "Le Bourgeois gentilhomme, à l’Apollo Théâtre", projet: urbns-view }
+  - { nom: DOA Dauphine On Air, role: "Émission de rentrée", projet: doa }
+  - { nom: GraffDeco, role: "Fresque Fenêtre sur Bois", projet: fenetre-sur-bois }
+  - { nom: Bureau des Arts, role: "Fenêtre sur Bois", projet: fenetre-sur-bois }
+  - { nom: Crous de Paris, role: "Projet CVEC de la fresque", projet: fenetre-sur-bois }
+  - { nom: Jibé, role: "Fresque de la cour, lauréat du concours", projet: street-art-dauphine }
+  - { nom: Lab Photo Dauphine, role: "Exposition à l’inauguration", projet: street-art-dauphine }
+  - { nom: Paris Dauphine – PSL, role: "Concours Street Art @ Dauphine", projet: street-art-dauphine }
 
 # Ordre des familles de projets (page Projets).
 familles:

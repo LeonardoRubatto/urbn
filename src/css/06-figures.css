@@ -1,0 +1,69 @@
+/* ---------- Figures de fond (DA : mot empilé sous un projecteur) ----------
+   Discrètes, asymétriques, coupées par leur section (overflow: clip ne casse pas les éléments sticky
+   et n’ajoute jamais de défilement horizontal). */
+.has-figure { position: relative; overflow: clip; isolation: isolate; }
+.has-figure > .wrap { position: relative; z-index: 1; }
+.figure { position: absolute; z-index: 0; top: var(--fig-top, 0); pointer-events: none; }
+.figure--right { right: -6vw; }
+.figure--left { left: -5vw; }
+.figure-word { display: flex; flex-direction: column; line-height: 0.8; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+  color: color-mix(in oklch, var(--gel) 70%, white 10%); opacity: 0.075; mix-blend-mode: screen; transition: color var(--gel-fade) var(--ease-out); }
+.figure--right .figure-word { align-items: flex-end; }
+.figure-word span { display: block; white-space: nowrap; font-size: calc(15vw * 100 / var(--w, 100)); font-variation-settings: "wdth" var(--w, 100); }
+.figure-beam { position: absolute; width: 70vw; height: 90vh; opacity: 0.55; mix-blend-mode: screen; filter: blur(2px); }
+.figure-beam--tl { left: 0; top: -20vh; background: conic-gradient(from 135deg at 0% 0%, transparent 0deg, color-mix(in oklch, var(--gel) 26%, transparent) 14deg, transparent 32deg); }
+.figure-beam--tr { right: 0; top: -20vh; background: conic-gradient(from 195deg at 100% 0%, transparent 0deg, color-mix(in oklch, var(--gel) 24%, transparent) 16deg, transparent 34deg); }
+.figure-beam--bl { left: 0; bottom: -10vh; top: auto; background: conic-gradient(from 15deg at 0% 100%, transparent 0deg, color-mix(in oklch, var(--gel) 22%, transparent) 14deg, transparent 30deg); }
+.figure--right .figure-beam--tl { left: auto; right: 40vw; }
+.figure--left .figure-beam--tr { right: auto; left: 40vw; }
+
+/* ---------- Le mur « Avec » ---------- */
+.avec { padding-block: var(--s-9); border-top: 1px solid var(--trait); }
+.avec-head { display: grid; grid-template-columns: 5fr 5fr; gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
+.avec-head p { color: var(--gris); font-size: 1.125rem; max-width: 40ch; }
+.avec-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-4) clamp(24px, 3vw, 56px); }
+.avec-list li { display: block; }
+.avec-list a { text-decoration: none; display: block; }
+.avec-name { display: block; font-size: clamp(1.75rem, 0.9rem + 2.6vw, 3.75rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; font-variation-settings: "wdth" var(--w, 100); color: var(--blanc); transition: color 270ms var(--ease-out); }
+.avec-role { display: block; margin-top: 6px; font-size: 0.8125rem; color: var(--gris); max-width: 32ch; }
+.avec-list a:hover .avec-name, .avec-list a:focus-visible .avec-name { color: var(--gel); }
+.avec-list li:nth-child(3n+2) .avec-name { color: oklch(0.88 0.01 270); }
+
+/* ---------- Cinq pôles : entrée en rideau (ordinateur) ----------
+   Grammaire « section-transitions » du design system : l’état caché n’existe qu’avec JavaScript,
+   sans mouvement réduit et tant que la section n’est pas atteinte ; on observe la section, on anime
+   ses enfants, une seule fois. Le focus clavier révèle tout de suite. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .js [data-reveal]:not(.is-in) .pole { clip-path: inset(100% 0 0 0); transform: translateY(72px); }
+  .js [data-reveal]:not(.is-in) .pole .loop img, .js [data-reveal]:not(.is-in) .pole .loop video { transform: scale(1.22); }
+  .js [data-reveal]:not(.is-in) .pole-name { opacity: 0; transform: translateY(12px); }
+  .js [data-reveal]:not(.is-in) .poles-head > * { opacity: 0; transform: translateY(24px); }
+  .js [data-reveal] .pole { transition: clip-path 1100ms var(--ease-out), transform 1100ms var(--ease-out); transition-delay: calc(var(--i, 0) * 110ms + 120ms); }
+  .js [data-reveal] .pole .loop img, .js [data-reveal] .pole .loop video { transition: transform 1500ms var(--ease-out), opacity 600ms var(--ease-out); transition-delay: calc(var(--i, 0) * 110ms + 120ms); }
+  .js [data-reveal] .pole-name { transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); transition-delay: calc(var(--i, 0) * 110ms + 700ms); }
+  .js [data-reveal] .poles-head > * { transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  .js [data-reveal] .poles-head > :nth-child(2) { transition-delay: 90ms; }
+  .js [data-reveal] .poles-head > :nth-child(3) { transition-delay: 180ms; }
+}
+.js [data-reveal].is-instant .pole, .js [data-reveal].is-instant .pole * { transition: none !important; }
+
+/* ---------- Rythme vertical : moins de vide entre les sections ---------- */
+.poles-reel { padding-bottom: var(--s-8); }
+.poles-reel + .tableaux { padding-top: var(--s-7); }
+.foot-mark span { color: oklch(0.22 0.02 275); }
+
+@media (max-width: 900px) {
+  .section-title { font-size: clamp(3rem, 14.5vw, 4.25rem); }
+  .desk, .poles-reel, .tableaux, .multicam, .bande, .avec, .bureau, .contact, .poles, .affiche { padding-block: var(--s-8); }
+  .poles-reel { padding-bottom: var(--s-6); }
+  .poles-reel + .tableaux { padding-top: var(--s-6); }
+  .tableaux-head, .poles-head { margin-bottom: var(--s-6); }
+  .bureau-head { margin-bottom: var(--s-6); }
+  .avec-head { grid-template-columns: 1fr; gap: var(--s-3); }
+  .avec-list { gap: var(--s-4) var(--s-5); }
+  .avec-name { font-size: clamp(1.625rem, 8.5vw, 2.25rem); }
+  .figure-word span { font-size: calc(26vw * 100 / var(--w, 100)); }
+  .figure--right { right: -14vw; }
+  .figure--left { left: -10vw; }
+  .figure-beam { width: 120vw; }
+}

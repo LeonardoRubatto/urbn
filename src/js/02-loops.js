@@ -13,6 +13,15 @@ function startLoop(el) {
   if (play) play.then(() => el.classList.add("is-playing")).catch(() => {});
 }
 
+// Prépare une boucle sans la lancer (la suivante dans une séquence) : elle démarre ensuite sans attente.
+function primeLoop(el) {
+  if (reduceMotion.matches || saveData) return;
+  const video = loopVideo(el);
+  if (!video || video.src) return;
+  video.preload = "auto";
+  video.src = smallScreen.matches ? video.dataset.sd : video.dataset.hd;
+}
+
 function stopLoop(el) {
   const video = loopVideo(el);
   if (video && !video.paused) video.pause();

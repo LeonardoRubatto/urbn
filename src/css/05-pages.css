@@ -6,10 +6,31 @@
 .decor--page .decor-line:not(:first-child) { color: color-mix(in oklch, var(--gel) 70%, transparent); }
 .archive-intro { color: var(--gris); font-size: 1.125rem; max-width: 36ch; }
 
-.filters { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-8); }
-.filters button { min-height: 44px; padding: 0 var(--s-5); background: none; border: 1px solid var(--trait); color: var(--gris); cursor: pointer; font-weight: 700; font-variation-settings: "wdth" 92; }
-.filters button:hover { color: var(--blanc); border-color: var(--blanc); }
-.filters button[aria-pressed="true"] { background: var(--blanc); color: var(--noir); border-color: var(--blanc); }
+/* Filtres : des mots étroits, pas des boîtes. Le compte en exposant ; le mot choisi s’élargit,
+   passe en blanc et prend un trait de la couleur de sa famille. */
+.filters { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) clamp(20px, 2.4vw, 40px); margin-bottom: var(--s-8); padding-bottom: var(--s-5); border-bottom: 1px solid var(--trait); }
+.filters button { --fgel: var(--jaune); position: relative; min-height: 48px; padding: 0 0 var(--s-2); background: none; border: 0; color: var(--gris-bas); cursor: pointer; display: inline-flex; align-items: flex-start; gap: 4px; }
+.filters button span { font-size: clamp(1.75rem, 1rem + 2vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; font-variation-settings: "wdth" 62; transition: font-variation-settings 480ms var(--ease-out), color 270ms var(--ease-out); }
+.filters sup { font-size: 0.8125rem; font-weight: 700; line-height: 1; padding-top: 2px; color: var(--gris-bas); font-variant-numeric: tabular-nums; }
+.filters button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--fgel); transform: scaleX(0); transform-origin: left; transition: transform 360ms var(--ease-out); }
+.filters button:hover span { color: var(--fgel); }
+.filters button[aria-pressed="true"] span { color: var(--blanc); font-variation-settings: "wdth" 88; }
+.filters button[aria-pressed="true"] sup { color: var(--fgel); }
+.filters button[aria-pressed="true"]::after { transform: scaleX(1); }
+
+/* ---------- Calendrier ---------- */
+.calendrier { padding-bottom: var(--s-10); }
+.cal-list { list-style: none; padding: 0; margin-top: var(--s-7); border-top: 1px solid var(--trait); }
+.cal-row { display: grid; grid-template-columns: minmax(150px, 2fr) 7fr auto; gap: var(--s-6); align-items: center; padding-block: var(--s-5); border-bottom: 1px solid var(--trait); }
+.cal-row time { display: flex; align-items: baseline; gap: var(--s-3); }
+.cal-day { font-size: clamp(2.25rem, 1.2rem + 2.4vw, 3.75rem); font-weight: 900; font-variation-settings: "wdth" 62; line-height: 0.9; font-variant-numeric: tabular-nums; color: var(--gris); }
+.cal-year { font-size: var(--t-small); font-weight: 700; color: var(--gris-bas); }
+.cal-what strong { display: block; font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); font-weight: 800; font-variation-settings: "wdth" 90; line-height: 1.1; }
+.cal-what strong a { text-decoration: none; transition: color 270ms var(--ease-out); }
+.cal-what strong a:hover, .cal-what strong a:focus-visible { color: var(--gel); }
+.cal-what > span { display: block; margin-top: 2px; color: var(--gris); font-size: 0.9375rem; }
+.cal-row.is-next .cal-day { color: var(--jaune); }
+.cal-tag { font-size: var(--t-small); font-weight: 800; color: var(--noir); background: var(--jaune); padding: 4px 8px; }
 
 .rows { list-style: none; padding: 0; display: grid; gap: var(--s-9); }
 .row[hidden] { display: none; }
@@ -103,8 +124,12 @@
   .archive { padding-top: 96px; }
   .archive-head { grid-template-columns: 1fr; gap: var(--s-5); margin-bottom: var(--s-7); }
   .decor--page { --decor-base: 20vw; }
-  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1) var(--s-7); padding-inline: var(--gutter); }
-  .filters button { flex: none; padding: 0 var(--s-4); }
+  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--gutter) * -1) var(--s-7); padding-inline: var(--gutter); gap: var(--s-5); }
+  .filters button { flex: none; }
+  .filters button span { font-size: 2rem; }
+  .cal-row { grid-template-columns: auto 1fr; gap: var(--s-2) var(--s-4); align-items: start; }
+  .cal-tag { grid-column: 2; justify-self: start; }
+  .calendrier { padding-bottom: var(--s-9); }
   .rows { gap: var(--s-8); }
   .row-link, .row--alt .row-link { grid-template-columns: 1fr; gap: var(--s-4); }
   .row--alt .row-media { order: 0; }

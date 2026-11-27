@@ -1,10 +1,10 @@
 // Couverture : trois tableaux vidéo qui se succèdent. Le gel et les largeurs du décor changent avec eux.
-// Pause : bouton icône (nom accessible) ; en mouvement réduit, rien ne défile.
+// Le défilement s’arrête tant que le pointeur ou le focus clavier est sur les onglets ; en mouvement réduit, rien ne défile.
 const plateau = document.querySelector("[data-plateau]");
 if (plateau) {
   const scenes = [...plateau.querySelectorAll("[data-scene]")];
   const tabs = [...plateau.querySelectorAll("[data-scene-tab]")];
-  const pause = plateau.querySelector("[data-pause]");
+  const index = plateau.querySelector(".plateau-index");
   const decors = [...plateau.querySelectorAll("[data-decor]")];
   const shapes = [[62, 125, 82, 108], [125, 70, 100, 62], [88, 62, 125, 76]];
   const SCENE_TIME = 7000;
@@ -39,16 +39,16 @@ if (plateau) {
   }
 
   tabs.forEach((tab, i) => tab.addEventListener("click", () => show(i, { user: true })));
-  pause?.addEventListener("click", () => {
-    paused = !paused;
-    pause.setAttribute("aria-pressed", String(paused));
-    pause.setAttribute("aria-label", paused ? "Relancer les vidéos" : "Mettre les vidéos en pause");
+  const hold = (on) => {
+    paused = on || reduceMotion.matches;
     plateau.toggleAttribute("data-paused", paused);
-    scenes.forEach((s) => s.querySelectorAll("[data-loop]").forEach((l) => (l.dataset.held = String(paused))));
-    paused ? pauseLoops(plateau) : refreshLoops(scenes[current]);
     schedule();
-  });
-  if (reduceMotion.matches) { plateau.toggleAttribute("data-paused", true); pause.hidden = true; }
+  };
+  index.addEventListener("pointerenter", () => hold(true));
+  index.addEventListener("pointerleave", () => hold(false));
+  index.addEventListener("focusin", () => hold(true));
+  index.addEventListener("focusout", (e) => { if (!index.contains(e.relatedTarget)) hold(false); });
+  if (reduceMotion.matches) plateau.toggleAttribute("data-paused", true);
 
   // La couverture ne tourne que si elle est visible.
   new IntersectionObserver(([entry]) => {

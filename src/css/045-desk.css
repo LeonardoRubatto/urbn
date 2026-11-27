@@ -11,7 +11,11 @@
 .desk-title p { font-weight: 700; font-size: 0.9375rem; line-height: 1.35; text-align: right; color: var(--gris); padding-bottom: 0.6em; }
 
 .desk-body { display: grid; grid-template-columns: minmax(180px, 220px) 1fr; gap: var(--s-6); align-items: end; margin-top: calc(var(--s-4) * -1); }
-.press-tabs { display: grid; align-self: center; border-top: 1px solid var(--trait); }
+/* Colonne de gauche : onglets puis le bouton du dossier choisi, calés en haut du plan photo. */
+.desk-rail { align-self: start; margin-top: var(--s-8); display: grid; gap: var(--s-6); justify-items: start; }
+.press-tabs { display: grid; width: 100%; border-top: 1px solid var(--trait); }
+.desk-actions [hidden] { display: none; }
+@media (min-width: 901px) { .dispatch-caption .dispatch-ticket { display: none; } }
 .press-tabs button { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); min-height: 76px; padding: var(--s-3) 0 var(--s-3) var(--s-3); background: none; border: 0; border-bottom: 1px solid var(--trait); text-align: left; cursor: pointer; position: relative; color: var(--gris); }
 .press-tabs button::before { content: ""; position: absolute; left: 0; top: 18%; bottom: 18%; width: 3px; background: var(--gel); transform: scaleY(0); transition: transform 270ms var(--ease-out); }
 .press-tabs button[aria-selected="true"] { color: var(--blanc); }
@@ -34,8 +38,8 @@
 .dispatch-caption { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-7); align-items: center; padding-left: clamp(0px, 30% - 120px, 30%); margin-top: var(--s-7); }
 .dispatch-caption > div { flex: 0 1 auto; }
 .dispatch-deck { flex: 1 1 24ch; min-width: 24ch; max-width: 36ch; }
-.dispatch-caption h2 { font-size: clamp(2.25rem, 1rem + 2.6vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; font-variation-settings: "wdth" 100; line-height: 0.95; }
-.dispatch-caption h2 + p { font-size: var(--t-small); color: var(--gris); margin-top: var(--s-1); }
+.dispatch-title { font-size: clamp(2.25rem, 1rem + 2.6vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; font-variation-settings: "wdth" 100; line-height: 0.95; }
+.dispatch-title + p { font-size: var(--t-small); color: var(--gris); margin-top: var(--s-1); }
 .dispatch-deck { font-size: 0.9375rem; line-height: 1.45; }
 .dispatch-panel.is-printing .dispatch-photo { animation: diaphragm 480ms var(--ease-out); }
 @keyframes diaphragm { from { clip-path: polygon(50% 40%, 50% 40%, 50% 60%, 50% 60%); } }
@@ -61,6 +65,8 @@
   .desk-title h1, .desk-title h2 { font-size: clamp(3.75rem, 19vw, 6rem); }
   .desk-title p { text-align: left; margin-top: var(--s-3); padding: 0; }
   .desk-body { display: block; margin-top: var(--s-5); }
+  .desk-rail { display: block; margin-top: 0; }
+  .desk-actions { display: none; }
   .press-tabs { display: flex; gap: var(--s-4); border: 0; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
   .press-tabs button { min-height: 44px; border: 0; padding: 0; flex: none; }
   .press-tabs button::before { left: 0; right: 0; top: auto; bottom: 4px; width: auto; height: 2px; transform: scaleX(0); }

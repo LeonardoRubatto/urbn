@@ -20,6 +20,7 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="assets/site.css">
   <script src="assets/site.js" defer></script>
   
@@ -38,8 +39,7 @@
   </header>
   <div class="wrap">
     <div class="filters" role="group" aria-label="Filtrer les projets" hidden>
-      <button type="button" aria-pressed="true" data-filter="">Tout</button>
-      <button type="button" aria-pressed="false" data-filter="scene">Scène</button><button type="button" aria-pressed="false" data-filter="soiree">Soirées</button><button type="button" aria-pressed="false" data-filter="format">Formats</button><button type="button" aria-pressed="false" data-filter="murs">Murs</button><button type="button" aria-pressed="false" data-filter="vie">Vie de l’asso</button>
+      <button type="button" aria-pressed="true" data-filter=""><span>Tout</span><sup aria-hidden="true">10</sup></button><button type="button" aria-pressed="false" data-filter="scene" style="--fgel:oklch(0.56 0.24 266)"><span>Scène</span><sup aria-hidden="true">1</sup></button><button type="button" aria-pressed="false" data-filter="soiree" style="--fgel:oklch(0.86 0.2 156)"><span>Soirées</span><sup aria-hidden="true">1</sup></button><button type="button" aria-pressed="false" data-filter="format" style="--fgel:oklch(0.62 0.21 27)"><span>Formats</span><sup aria-hidden="true">4</sup></button><button type="button" aria-pressed="false" data-filter="murs" style="--fgel:oklch(0.74 0.15 140)"><span>Murs</span><sup aria-hidden="true">2</sup></button><button type="button" aria-pressed="false" data-filter="vie" style="--fgel:oklch(0.8 0.13 66)"><span>Vie de l’asso</span><sup aria-hidden="true">2</sup></button>
     </div>
     <p class="sr-only" role="status" data-filter-status></p>
     <ol class="rows" role="list"><li class="row" data-famille="scene" style="--gel:oklch(0.56 0.24 266)">
@@ -168,6 +168,49 @@
       </span>
     </a>
   </li></ol>
+  </div>
+</section>
+<section class="calendrier has-figure" aria-labelledby="titre-calendrier">
+  <div class="figure figure--left" aria-hidden="true" style="--fig-top:10%"><i class="figure-beam figure-beam--tr"></i><span class="figure-word"><span style="--w:62">Dates</span><span style="--w:125">Dates</span><span style="--w:88">Dates</span></span></div>
+  <div class="wrap">
+  <h2 id="titre-calendrier" class="section-title">Le calendrier</h2>
+  <ol class="cal-list" role="list"><li class="cal-row is-next" style="--gel:oklch(0.56 0.24 266)">
+      <time datetime="2026-12-02T18:45"><span class="cal-day">02.12</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="dau-clash.html" data-gel="oklch(0.56 0.24 266)">DAU’Clash</a></strong><span>18 h 45 · Amphi 1, Paris Dauphine – PSL · Rap battle et éloquence</span></span>
+      <span class="cal-tag">À venir</span>
+    </li><li class="cal-row" style="--gel:oklch(0.8 0.16 340)">
+      <time datetime="2026-10-09"><span class="cal-day">09.10</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="doa.html" data-gel="oklch(0.8 0.16 340)">DOA × L’Urbaine</a></strong><span>Émission de rentrée</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.8 0.13 66)">
+      <time datetime="2026-10-08"><span class="cal-day">08.10</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="rentree-2026.html" data-gel="oklch(0.8 0.13 66)">Rentrée 2026</a></strong><span>Trailer et recrutement</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.6 0.17 18)">
+      <time datetime="2026-10-03"><span class="cal-day">03.10</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="sade.html" data-gel="oklch(0.6 0.17 18)">Sade</a></strong><span>Portrait musical</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.78 0.12 220)">
+      <time datetime="2026-09-07"><span class="cal-day">07.09</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="wed-2026.html" data-gel="oklch(0.78 0.12 220)">WED 2026</a></strong><span>Le week-end de l’asso</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.62 0.21 27)">
+      <time datetime="2026-02-21"><span class="cal-day">21.02</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="urbns-view.html" data-gel="oklch(0.62 0.21 27)">URBN’s View</a></strong><span>Apollo Théâtre, Paris · Entretiens à la sortie du spectacle</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.86 0.2 156)">
+      <time datetime="2026-02-12"><span class="cal-day">12.02</span><span class="cal-year">2026</span></time>
+      <span class="cal-what"><strong><a href="urnight.html" data-gel="oklch(0.86 0.2 156)">UR’Night</a></strong><span>Club Vendôme, Paris · Rap, shatta, bouyon et R&amp;B</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.74 0.15 140)">
+      <time datetime="2024-04-08"><span class="cal-day">08.04</span><span class="cal-year">2024</span></time>
+      <span class="cal-what"><strong><a href="fenetre-sur-bois.html" data-gel="oklch(0.74 0.15 140)">Fenêtre sur Bois</a></strong><span>Campus de Paris Dauphine – PSL · Fresque de GraffDeco</span></span>
+      
+    </li><li class="cal-row" style="--gel:oklch(0.86 0.16 95)">
+      <time datetime="2022-06-01"><span class="cal-day">01.06</span><span class="cal-year">2022</span></time>
+      <span class="cal-what"><strong><a href="street-art-dauphine.html" data-gel="oklch(0.86 0.16 95)">Street Art @ Dauphine</a></strong><span>Cour de Paris Dauphine – PSL · Concours et fresque de Jibé</span></span>
+      
+    </li></ol>
   </div>
 </section></main>
   <footer class="foot">
