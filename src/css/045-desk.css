@@ -58,7 +58,6 @@
 .pole--4 { margin-top: var(--s-10); }
 .pole--5 { margin-top: var(--s-4); }
 .pole-name { display: block; margin-top: var(--s-3); font-size: 0.9375rem; font-weight: 800; color: var(--blanc); font-variation-settings: "wdth" 110; }
-.pole-name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--jaune); margin-right: 8px; vertical-align: 1px; }
 
 @media (max-width: 900px) {
   .desk { padding-top: var(--s-8); }

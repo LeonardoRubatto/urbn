@@ -24,6 +24,7 @@
   --gris-bas: oklch(0.62 0.014 270);
   --trait: oklch(1 0 0 / 0.16);
   --jaune: oklch(0.91 0.19 103);
+  --date: var(--jaune);          /* couleur des dates (couverture, À l’affiche, calendrier, fiches) : la changer ici */
   --rouge: oklch(0.63 0.22 28);
 
   --font: "Archivo", "Arial Narrow", Arial, sans-serif;

@@ -22,9 +22,6 @@ if (plateau) {
     scenes[current].classList.add("is-current");
     const tab = tabs[current];
     tab.setAttribute("aria-pressed", "true");
-    // relance la barre de progression
-    const bar = tab.querySelector("i");
-    bar.style.animation = "none"; bar.offsetWidth; bar.style.animation = "";
     const gel = scenes[current].dataset.gel;
     setGel(gel, plateau);
     setGel(gel);

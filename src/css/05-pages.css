@@ -29,8 +29,8 @@
 .cal-what strong a { text-decoration: none; transition: color 270ms var(--ease-out); }
 .cal-what strong a:hover, .cal-what strong a:focus-visible { color: var(--gel); }
 .cal-what > span { display: block; margin-top: 2px; color: var(--gris); font-size: 0.9375rem; }
-.cal-row.is-next .cal-day { color: var(--jaune); }
-.cal-tag { font-size: var(--t-small); font-weight: 800; color: var(--noir); background: var(--jaune); padding: 4px 8px; }
+.cal-row.is-next .cal-day { color: var(--date); }
+.cal-tag { font-size: var(--t-small); font-weight: 800; color: var(--noir); background: var(--date); padding: 4px 8px; }
 
 .rows { list-style: none; padding: 0; display: grid; gap: var(--s-9); }
 .row[hidden] { display: none; }
@@ -63,7 +63,7 @@
 .fiche-facts div { display: grid; }
 .fiche-facts dt { font-size: var(--t-small); color: var(--gris); }
 .fiche-facts dd { margin: 0; font-weight: 700; }
-.fiche-facts time { color: var(--jaune); }
+.fiche-facts time { color: var(--date); }
 
 .fiche-body { display: grid; grid-template-columns: 2fr 6fr 4fr; gap: var(--s-7); padding-block: var(--s-9); align-items: start; }
 .fiche-text { grid-column: 2; max-width: 62ch; }
@@ -180,6 +180,5 @@
   .bande-track { animation: none !important; flex-wrap: wrap; width: auto; }
   .bande-lane { mask-image: none; }
   .bande-control { display: none; }
-  .plateau-tab i { display: none; }
   .loop video { display: none; }
 }

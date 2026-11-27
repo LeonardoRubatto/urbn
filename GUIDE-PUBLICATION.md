@@ -38,15 +38,16 @@ Champs (entre les deux lignes `---`) :
 - `famille` (obligatoire) : `scene`, `soiree`, `format`, `murs` ou `vie` (liste et noms dans `familles` de `content/site.yml` ; ajouter une famille là-bas crée un nouveau filtre).
 - `genre` : sous-titre court, « Rap battle et éloquence ».
 - `resume` (obligatoire) : une phrase, utilisée sur l’accueil, la page Projets et pour Google.
-- `gel` (obligatoire) : la couleur de lumière du projet, `"oklch(L C H)"`. Prends-la sur la vidéo ou la photo principale : bleu de l’amphi `oklch(0.56 0.24 266)`, vert du club `oklch(0.86 0.2 156)`, rouge `oklch(0.6 0.17 18)`. Garde L entre 0.55 et 0.88 pour qu’elle se lise sur le noir.
-- `date` : `2026-12-02` ou avec l’heure `2026-12-02T18:45`. **Une date à venir fait apparaître le projet en « Prochaine date » sur la couverture** ; le lendemain, il redevient un projet passé au prochain build. `date_affichee` remplace l’affichage (« 2022 »).
+- `gel` (obligatoire) : la couleur de lumière du projet, `"oklch(L C H)"`. Prends-la sur la vidéo ou la photo principale : bleu de l’amphi `oklch(0.56 0.24 266)`, vert du club `oklch(0.86 0.2 156)`, rouge `oklch(0.6 0.17 18)`. Garde L entre 0.55 et 0.88 pour qu’elle se lise sur le noir. Pour la mesurer : `npm run gel -- media/images/affiche.jpg`, ou sur une vidéo `npm run gel -- media/videos/film.mp4 14 6` (début et durée de la boucle) ; l’outil propose une valeur et deux autres teintes, à confirmer à l’œil.
+- `date` : `2026-12-02` ou avec l’heure `2026-12-02T18:45`. **Une date à venir fait apparaître le projet en « Prochaine date » sur la couverture** (s’il y en a plusieurs, la plus proche ; l’heure s’affiche seulement si elle est écrite). La date est comparée au jour du build : une fois passée, le projet redevient un projet passé **au build suivant** (pense à régénérer le site après l’évènement). Une date à venir demande un `lieu`. `date_affichee` remplace l’affichage (« 2022 »).
 - `lieu`, `edition` (« 8e édition », « #1 »).
 - `boucle` : l’extrait vidéo de couverture, `vidéo#nom` (voir plus bas). Sinon `affiche`.
 - `affiche` : une image (clé de `content/medias.yml`). Si le projet a une boucle **et** une affiche, l’affiche traverse la photo dans « À la une ».
 - `films` : liste de vidéos lisibles en entier (elles doivent avoir `film: true`).
 - `photos` : liste d’images pour la galerie (ordre d’affichage).
 - `sources` : liens vers les publications d’origine, `{ texte: …, url: … }`.
-- `ordre` : position dans les listes (1 = en premier). `accueil: true` : le projet apparaît dans « Les projets » de l’accueil.
+- `ordre` : position dans les listes (le plus petit en premier ; sans `ordre`, après les autres, par ordre alphabétique). Mets les projets récents et forts en tête.
+- `accueil: true` : le projet apparaît dans la séquence « Les projets » de l’accueil. Garde-en 5 à 7, des projets récents qui ont une `boucle` (la séquence est faite pour la vidéo) ; pour en ajouter un, retires-en un autre.
 - `page: false` + `lien` : un projet sans page, qui renvoie ailleurs (Instagram).
 - `brouillon: true` : garde le fichier hors du site.
 
@@ -98,16 +99,28 @@ Les vignettes affichées par Instagram sont petites (360 à 640 px) : ne les uti
 - `poles` : `titre`, `texte`, `film` (la vidéo complète), `boucles` (liste de `{ nom, boucle }`, une boucle verticale par pôle).
 - `multicam` : le trailer en mur de caméras : `titre`, `film`, `texte`, `boucles` (quatre boucles).
 - `bandeau` : deux listes d’images (clés de `medias.yml`) qui défilent en sens opposés.
-- `collaborations` : le générique « Avec », chacun `{ nom, role, projet }`. Seulement des collaborations citées dans une publication ou une source.
+- `collaborations` : le générique « Avec », chacun `{ nom, role, projet }`. `projet` est facultatif : avec, le nom renvoie à la page du projet ; sans, il reste du texte. Seulement des collaborations citées dans une publication ou une source : si le rôle ou la source manque, demande-les.
 - `familles` : les familles de projets et leur nom affiché (elles deviennent les filtres de la page Projets).
 - `mentions` : éditeur, direction de la publication, hébergeur (page Mentions légales).
 
 ## L’équipe (`content/equipe.yml`)
 
 - `mandat` (« 2026–2027 »), `annonce` (lien de la publication du bureau), `photo_groupe`, `merci` (phrase reprise de l’annonce).
-- `bureau` : une ligne par personne `{ prenom, nom, role, photo, succede }`. Pour un nouveau mandat : changer `mandat`, `annonce`, la photo de groupe et la liste.
+- `bureau` : une ligne par personne `{ prenom, nom, role, photo, succede }` (`succede` : la personne qui avait ce rôle au mandat précédent). Pour un nouveau mandat, voir « Cas fréquents » plus bas.
 - `presentation` : les paragraphes de la page Collectif (mots de l’association). `film_famille` : la vidéo de présentation.
 - `poles` : les mots affichés en grand sur la page Collectif. `recrutement` : la phrase de la section « Rejoindre ».
+
+## Cas fréquents
+
+**Nouvelle édition d’un évènement récurrent** (DAU’Clash, UR’Night, WED…) : on garde **le même fichier de projet** (son adresse ne change pas), on ne crée pas de nouveau fichier, sauf demande contraire. On met à jour `date`, `lieu`, `edition`, `affiche` ; on ajoute les nouveaux films **en tête** de `films` sans retirer les anciens ; on change la `boucle` et le `gel` si la nouvelle vidéo est meilleure ; on remplace la citation si la nouvelle publication en donne une. Si le projet est dans `couverture` ou `une` de `content/site.yml`, rien d’autre à faire.
+
+**Nouveau bureau** :
+1. Photos dans `media/images/` nommées `bureau-AAAA-0.jpg` (groupe) puis `bureau-AAAA-1.jpg`, `-2`… (une par personne, dans l’ordre de la liste), déclarées dans `content/medias.yml`.
+2. Dans `content/equipe.yml` : `mandat`, `annonce`, `photo_groupe`, `merci` et la liste `bureau` (avec `succede`).
+3. Les anciennes photos : les garder si une autre partie les utilise (cherche leur clé, par exemple `bureau-2026-0` dans `bandeau` de `content/site.yml`), sinon retirer leur entrée de `medias.yml` et le fichier.
+4. Si un nouveau trailer de l’année existe, le mettre dans `multicam` (`film` et quatre `boucles`) de `content/site.yml`.
+
+**Couleur des dates** (jaune) : elle se règle à un seul endroit, `--date` dans `src/css/01-tokens.css`.
 
 ## Règles
 

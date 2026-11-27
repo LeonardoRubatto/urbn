@@ -22,7 +22,9 @@ du même type que celui que tu vas créer. Le site est en français : écris en 
 | Ajouter une photo, une vidéo, une boucle, un film | fichier dans `media/` + entrée dans `content/medias.yml` |
 | Annoncer un évènement (prochaine date sur la couverture) | `date`, `lieu`, `edition` du projet |
 | Couverture, « À la une », pôles, trailer, bandeau, mur « Avec », familles | `content/site.yml` |
-| Bureau, présentation, pôles du Collectif, recrutement | `content/equipe.yml` |
+| Nouvelle édition d’un évènement (DAU’Clash 9…) | le **même** fichier de projet : `date`, `lieu`, `edition`, `affiche`, nouveaux films en tête (GUIDE, « Cas fréquents ») |
+| Bureau, présentation, pôles du Collectif, recrutement | `content/equipe.yml` (nouveau mandat : GUIDE, « Cas fréquents ») |
+| Couleur des dates | `--date` dans `src/css/01-tokens.css` |
 | Email, Instagram, mentions légales, ouverture à Google | `content/site.yml` |
 
 Tous les champs sont expliqués dans `GUIDE-PUBLICATION.md`.
@@ -31,16 +33,19 @@ Tous les champs sont expliqués dans `GUIDE-PUBLICATION.md`.
 
 Pour un nouveau projet, il te faut au minimum : le titre, la famille, une phrase de résumé validée, la date (et l’heure si
 c’est à venir), le lieu, les fichiers d’origine (pas des captures ni des vignettes Instagram), le crédit de chaque fichier
-et le lien de la publication d’origine. S’il manque un élément, **demande-le** avant d’écrire. Pour une vidéo, demande quel
+et le lien de la publication d’origine. S’il manque un élément, **demande-le** avant d’écrire. De même pour un nom ajouté
+à « Avec » : il faut son rôle et la publication qui le cite (`projet` est facultatif). Pour une vidéo, demande quel
 passage mettre en boucle si ce n’est pas évident (sinon propose deux ou trois passages avec leur seconde de début).
 
 ## 4. Ce que tu fais
 
 1. Intègre les fichiers dans `media/`, déclare-les dans `content/medias.yml` avec un texte `alt` factuel (ce qu’on voit).
-2. Choisis le `gel` (couleur de lumière) en mesurant la couleur dominante de la boucle ou de l’affiche ; luminosité L entre 0.55 et 0.88.
-3. `npm run build` puis `npm run check` : les deux doivent finir sans erreur.
-4. Vérifie (section 8), puis commite **avec `dist/`**.
-5. Ne pousse sur `main` que si une personne autorisée l’a demandé : le push met le site en ligne.
+2. Choisis le `gel` (couleur de lumière) avec `npm run gel -- <fichier> [début durée]` sur l’affiche ou le passage de la boucle ;
+   l’outil garde L entre 0.55 et 0.88. Vérifie à l’œil : c’est la lumière du projet, pas forcément sa couleur la plus présente.
+3. Range le projet : `ordre` (le plus petit en premier) ; `accueil: true` seulement pour 5 à 7 projets récents avec une `boucle`.
+4. `npm run build` puis `npm run check` : les deux doivent finir sans erreur.
+5. Vérifie (section 8), puis commite **avec `dist/`**.
+6. Ne pousse sur `main` que si une personne autorisée l’a demandé : le push met le site en ligne.
 
 ## 5. Ce que tu ne fais pas
 
@@ -98,7 +103,7 @@ en boucle ne se lancent qu’à l’écran, version légère sur téléphone), `
 `10-curtain` (rideau entre les pages), `11-smooth` (quand un titre change de nombre de lignes, le bloc et les mots glissent).
 
 **Génération** : `scripts/build.mjs` (pages + vérifications ; `--check` = vérifier sans écrire), `scripts/media.mjs` (images et vidéos ;
-un média n’est refait que si son fichier ou ses réglages changent ; `npm run media -- --force` refait tout), `scripts/lib/content.mjs` (lecture de `content/`).
+un média n’est refait que si son fichier ou ses réglages changent ; `npm run media -- --force` refait tout), `scripts/lib/content.mjs` (lecture de `content/`), `scripts/gel.mjs` (propose un gel mesuré sur une image ou une vidéo).
 
 **Règles qui ne se voient pas à l’œil** : toute animation a sa version « mouvement réduit » ; tout élément interactif est utilisable
 au clavier avec un contour visible ; zones cliquables ≥ 44 px ; aucun débordement horizontal (utiliser `overflow: clip`, jamais
@@ -122,3 +127,5 @@ au clavier avec un contour visible ; zones cliquables ≥ 44 px ; aucun déborde
 - **Cloudflare publie la racine du dépôt** si `wrangler.toml` disparaît : la publication échoue (fichiers de `media/` trop lourds).
 - **Vidéos sans ffmpeg** : le build garde les vidéos déjà produites et signale les nouvelles manquantes. Installer ffmpeg (`winget install Gyan.FFmpeg`).
 - **Couverture qui ne remplit pas l’écran du téléphone** : hauteur en `100dvh` (pas `100vh` seul).
+- **« Prochaine date » qui reste affichée après l’évènement** : elle est calculée au build. Régénérer le site (ou pousser un changement) après la date.
+- **Barres de progression, bouton pause, points de couleur** : retirés à la demande du client, il n’en reste rien dans le code. Ne pas les remettre.

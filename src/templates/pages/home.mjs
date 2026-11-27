@@ -27,7 +27,7 @@ function couverture(ctx, next) {
     <span class="plateau-date-what"><strong>${esc(next.titre)}${next.edition ? ` · ${esc(next.edition)}` : ""}</strong><span>${next.date.heure ? esc(next.date.heure) + " · " : ""}${esc(next.lieu || "")}</span></span>
   </a>` : ""}
   <div class="plateau-index" role="group" aria-label="Tableaux de la couverture">
-    ${scenes.map((s, i) => `<button type="button" class="plateau-tab" aria-pressed="${i === 0}" data-scene-tab style="--gel:${esc(s.gel)}"><i aria-hidden="true"></i><span>${esc(s.titre)}</span></button>`).join("")}
+    ${scenes.map((s, i) => `<button type="button" class="plateau-tab" aria-pressed="${i === 0}" data-scene-tab style="--gel:${esc(s.gel)}"><span>${esc(s.titre)}</span></button>`).join("")}
   </div>
 </section>`;
 }
