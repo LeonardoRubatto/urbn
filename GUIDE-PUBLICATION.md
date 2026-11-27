@@ -22,7 +22,7 @@ Le site est un dossier de fichiers statiques. Le contenu vit dans des fichiers s
 1. `npm run build` : crée les images web (AVIF + WebP en plusieurs tailles), les boucles et les films, puis les pages. Seuls les médias nouveaux ou modifiés sont refaits.
 2. `npm run check` : vérifie tout (champ manquant, image non déclarée, fichier introuvable, lien cassé, texte alternatif absent). Il doit finir par « tout est en ordre ».
 3. Ouvre `dist/index.html` (double-clic) et la page concernée.
-4. Pousse sur `main` : l’action GitHub (`.github/workflows/site.yml`) régénère le site et le met en ligne sur Cloudflare Pages en quelques minutes (plus longtemps la première fois ou après l’ajout d’une vidéo). Le dossier `dist/` n’est pas dans le dépôt : il est recréé à chaque fois.
+4. Pousse sur `main` : l’action GitHub (`.github/workflows/site.yml`) régénère le site, le dépose sur la branche `site`, et Cloudflare Pages le met en ligne en quelques minutes (plus longtemps la première fois ou après l’ajout d’une vidéo). Le dossier `dist/` n’est pas dans le dépôt : il est recréé à chaque fois.
 
 Première installation sur une machine : Node.js 20 ou plus, puis `npm ci`. Pour les vidéos : ffmpeg (`winget install Gyan.FFmpeg`). Sans ffmpeg, le site se génère quand même avec les vidéos déjà produites ; seules les nouvelles vidéos manquent (le build le signale).
 

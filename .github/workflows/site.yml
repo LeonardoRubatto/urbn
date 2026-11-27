@@ -1,15 +1,10 @@
-# Génère le site à chaque modification du contenu et le publie sur Cloudflare Pages.
-# Le dépôt ne contient que les sources : les pages et les médias web (dist/) sont produits ici,
-# jamais recommités. Les images et vidéos déjà produites sont gardées en cache : seuls les médias
-# nouveaux ou modifiés sont refaits (ffmpeg n’est installé que dans ce cas).
-#
-# Réglages côté GitHub (Settings → Secrets and variables → Actions) :
-#   secret   CLOUDFLARE_API_TOKEN   jeton Cloudflare avec la permission « Cloudflare Pages : Edit »
-#   secret   CLOUDFLARE_ACCOUNT_ID  identifiant du compte Cloudflare
-#   variable CLOUDFLARE_PROJECT     nom du projet Pages (par défaut : urbn)
-# Côté Cloudflare : couper le déploiement automatique depuis Git du projet (sinon Cloudflare
-# essaie aussi de publier le dépôt brut, sans build).
-name: Générer et publier le site
+# Génère le site à chaque modification du contenu et le dépose sur la branche « site ».
+#   main → les sources (contenus, médias d’origine, gabarits, scripts, guides) : c’est ici qu’on publie.
+#   site → uniquement le site généré (dist/), remplacé à chaque fois par un seul commit, sans historique.
+# Cloudflare Pages publie la branche « site » telle quelle (aucune commande de build, dossier racine).
+# Les images et vidéos déjà produites sont gardées en cache : seuls les médias nouveaux ou modifiés
+# sont refaits (ffmpeg n’est installé que dans ce cas). Aucun secret à configurer.
+name: Générer le site
 
 on:
   push:
@@ -25,14 +20,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: publication
+  group: site
   cancel-in-progress: true
 
 jobs:
-  publier:
+  generer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -56,9 +51,13 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check
-      - name: Publier sur Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: Déposer le site sur la branche « site »
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT || 'urbn' }} --branch=main --commit-dirty=true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: site
+          publish_dir: ./dist
+          force_orphan: true
+          user_name: urbn-build
+          user_email: actions@users.noreply.github.com
+          full_commit_message: "Site généré depuis ${{ github.sha }}"
