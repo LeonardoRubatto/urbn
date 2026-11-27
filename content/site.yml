@@ -5,7 +5,7 @@ nom: L’Urbaine Paris
 nom_court: Urbn
 baseline: Association et média étudiant de Paris Dauphine – PSL
 fondation: 2013
-adresse_site: https://urbndau.pages.dev
+adresse_site: https://urbndauphine.pages.dev
 # Mettre false le jour où le site est public (retire noindex et ouvre robots.txt).
 prive: true
 

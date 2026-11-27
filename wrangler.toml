@@ -1,5 +1,5 @@
 # Cloudflare Pages : publie le dossier dist/ (le site généré), pas la racine du dépôt.
 # « name » = nom du projet Cloudflare Pages.
-name = "urbndau"
+name = "urbndauphine"
 pages_build_output_dir = "./dist"
 compatibility_date = "2026-11-27"
