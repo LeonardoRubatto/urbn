@@ -45,7 +45,7 @@ export function projet(ctx, p) {
     <p class="gallery-credit">Photos : ${esc([...new Set(photos.map((k) => ctx.medias.images[k].credit))].join(" ; "))}</p>
     <dialog class="viewer" aria-label="Photos du projet">
       <div class="viewer-layout">
-        <button type="button" class="viewer-close">Fermer</button>
+        <button type="button" class="viewer-close" aria-label="Fermer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
         <figure><img alt=""><figcaption></figcaption></figure>
         <div class="viewer-controls"><button type="button" class="viewer-prev" aria-label="Photo précédente"></button><output class="viewer-count"></output><button type="button" class="viewer-next" aria-label="Photo suivante"></button></div>
       </div>

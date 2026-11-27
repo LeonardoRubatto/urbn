@@ -192,8 +192,9 @@ h1, h2, h3 { font-weight: 850; line-height: 0.92; letter-spacing: -0.01em; }
 .projection-screen figcaption { font-size: 0.9375rem; color: var(--gris); }
 .projection-screen figcaption strong { color: var(--blanc); margin-right: 8px; }
 .projection-screen figcaption a { color: var(--blanc); margin-left: 8px; }
-.projection-close { position: absolute; top: var(--s-4); right: var(--gutter); min-height: 44px; padding: 0 var(--s-5); background: none; border: 1px solid var(--trait); color: var(--blanc); font-weight: 700; cursor: pointer; }
-.projection-close:hover { border-color: var(--jaune); color: var(--jaune); }
+/* Fermer = une simple croix (pas de bouton encadré « Fermer »), zone cliquable de 44 px. */
+.projection-close { position: absolute; top: var(--s-4); right: var(--gutter); width: 44px; height: 44px; display: grid; place-items: center; padding: 0; background: none; border: 0; color: var(--blanc); cursor: pointer; transition: color 200ms var(--ease-out), transform 300ms var(--ease-out); }
+.projection-close:hover, .viewer-close:hover { color: var(--jaune); transform: rotate(90deg); }
 
 /* ---------- Billet perforé (slide-text-button, Kokonut UI, MIT) ---------- */
 .ticket {
@@ -257,7 +258,7 @@ h1, h2, h3 { font-weight: 850; line-height: 0.92; letter-spacing: -0.01em; }
 .viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--blanc); }
 .viewer::backdrop { background: oklch(0.08 0.012 275 / 0.96); }
 .viewer-layout { height: 100%; display: grid; grid-template-rows: auto 1fr auto; padding: var(--s-4) var(--gutter) var(--s-5); gap: var(--s-4); }
-.viewer-close { justify-self: end; min-height: 44px; padding: 0 var(--s-5); background: none; border: 1px solid var(--trait); color: var(--blanc); font-weight: 700; cursor: pointer; }
+.viewer-close { justify-self: end; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; background: none; border: 0; color: var(--blanc); cursor: pointer; transition: color 200ms var(--ease-out), transform 300ms var(--ease-out); }
 .viewer figure { display: grid; place-items: center; min-height: 0; gap: var(--s-3); grid-template-rows: 1fr auto; }
 .viewer img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; min-height: 0; }
 .viewer img.is-opening { animation: viewer-iris 450ms var(--ease-out); }

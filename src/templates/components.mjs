@@ -49,7 +49,7 @@ export function filmButton(ctx, key, { label, cls = "", sizes = "(min-width: 900
 
 export const projection = `<dialog class="projection" aria-label="Lecture de la vidéo">
   <div class="projection-room">
-    <button type="button" class="projection-close">Fermer</button>
+    <button type="button" class="projection-close" aria-label="Fermer"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
     <figure class="projection-screen"><video controls playsinline preload="none"></video><figcaption><strong></strong><span></span> <a rel="noopener">Voir la publication</a></figcaption></figure>
   </div>
 </dialog>`;
