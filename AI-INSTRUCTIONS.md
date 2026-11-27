@@ -20,7 +20,7 @@ Pour un nouveau projet, il te faut au minimum : le titre, la famille, une phrase
 2. Choisis le `gel` en mesurant la couleur dominante de la boucle ou de l’affiche (luminosité L entre 0.55 et 0.88).
 3. Lance `npm run build` puis `npm run check`. Les deux doivent finir sans erreur.
 4. Ouvre la page concernée et vérifie : boucle qui tourne, film qui se lance, crédits, texte alternatif, rendu à 390 px et 1440 px.
-5. Ne pousse sur `main` que si une personne autorisée l’a demandé : le push met le site en ligne (l’action GitHub génère la branche `site`, publiée par Cloudflare Pages). Ne touche jamais à la branche `site`.
+5. Ne pousse sur `main` que si une personne autorisée l’a demandé : le push met le site en ligne (Cloudflare Pages publie `dist/`, voir `wrangler.toml`). Pousse `dist/` régénéré avec tes changements ; sinon l’action GitHub le régénère.
 
 ## Ce que tu ne fais pas
 

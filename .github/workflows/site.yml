@@ -1,9 +1,6 @@
-# Génère le site à chaque modification du contenu et le dépose sur la branche « site ».
-#   main → les sources (contenus, médias d’origine, gabarits, scripts, guides) : c’est ici qu’on publie.
-#   site → uniquement le site généré (dist/), remplacé à chaque fois par un seul commit, sans historique.
-# Cloudflare Pages publie la branche « site » telle quelle (aucune commande de build, dossier racine).
-# Les images et vidéos déjà produites sont gardées en cache : seuls les médias nouveaux ou modifiés
-# sont refaits (ffmpeg n’est installé que dans ce cas). Aucun secret à configurer.
+# Régénère le site (dist/) quand le contenu change et le recommite sur main.
+# Cloudflare Pages publie ensuite dist/ (voir wrangler.toml) : une seule branche, une seule version.
+# Les médias déjà produits sont dans dist/ : seuls les nouveaux ou modifiés sont refaits.
 name: Générer le site
 
 on:
@@ -35,29 +32,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Médias déjà produits (cache)
-        id: medias
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist/assets/img
-            dist/assets/video
-            dist/assets/medias.json
-          key: medias-${{ hashFiles('media/**', 'content/medias.yml', 'scripts/media.mjs') }}
-          restore-keys: medias-
       - name: Installer ffmpeg (vidéos)
-        if: steps.medias.outputs.cache-hit != 'true'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: npm ci
       - run: npm run build
       - run: npm run check
-      - name: Déposer le site sur la branche « site »
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: site
-          publish_dir: ./dist
-          force_orphan: true
-          user_name: urbn-build
-          user_email: actions@users.noreply.github.com
-          full_commit_message: "Site généré depuis ${{ github.sha }}"
+      - name: Enregistrer le site généré
+        run: |
+          git config user.name "urbn-build"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A dist
+          if git diff --cached --quiet; then echo "Rien à enregistrer."; else git commit -m "Générer le site [skip ci]" && git push; fi

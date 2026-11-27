@@ -1,5 +1,4 @@
-# Seules les sources du site sont versionnées (liste blanche). dist/ est généré par npm run build
-# et, sur GitHub, par .github/workflows/site.yml.
+# Seul ce qui sert au site est versionné (liste blanche) : sources, guides et site généré dist/.
 /*
 !/.gitignore
 !/.github/
@@ -9,9 +8,12 @@
 !/CREDITS.md
 !/package.json
 !/package-lock.json
+!/wrangler.toml
 !/content/
 !/media/
 !/src/
 !/scripts/
 !/_modeles/
+!/dist/
 /media/instagram-publications.json
+dist/assets/video/.tmp/

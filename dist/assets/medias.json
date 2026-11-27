@@ -1,0 +1,1000 @@
+{
+ "images": {
+  "dau-clash-8-affiche": {
+   "w": 662,
+   "h": 1170,
+   "widths": [
+    480,
+    662
+   ],
+   "hash": "a9f33947d7a9b53d"
+  },
+  "trailer-2026-couverture": {
+   "w": 1170,
+   "h": 2080,
+   "widths": [
+    480,
+    800,
+    1170
+   ],
+   "hash": "78cf2123796926cc"
+  },
+  "mois-de-rentree-couverture": {
+   "w": 1170,
+   "h": 2080,
+   "widths": [
+    480,
+    800,
+    1170
+   ],
+   "hash": "d4cd57a43cd3223b"
+  },
+  "urbaine-famille-couverture": {
+   "w": 1152,
+   "h": 2048,
+   "widths": [
+    480,
+    800,
+    1152
+   ],
+   "hash": "2df13f70e53fd315"
+  },
+  "doa-affiche": {
+   "w": 1179,
+   "h": 2096,
+   "widths": [
+    480,
+    800,
+    1179
+   ],
+   "hash": "8a7fa911c5b0ca1f"
+  },
+  "urbns-view-1-couverture": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    480,
+    720
+   ],
+   "hash": "04cfcae083e75fbb"
+  },
+  "bureau-2026-0": {
+   "w": 1440,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1200,
+    1440
+   ],
+   "hash": "4d96fbba4ee86965"
+  },
+  "bureau-2026-1": {
+   "w": 1440,
+   "h": 1916,
+   "widths": [
+    480,
+    800,
+    1200,
+    1440
+   ],
+   "hash": "101fe58e116f0d33"
+  },
+  "bureau-2026-2": {
+   "w": 1440,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1200,
+    1440
+   ],
+   "hash": "a2ae07079a224595"
+  },
+  "bureau-2026-3": {
+   "w": 1440,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1200,
+    1440
+   ],
+   "hash": "e783cf79786a148f"
+  },
+  "bureau-2026-4": {
+   "w": 1440,
+   "h": 1920,
+   "widths": [
+    480,
+    800,
+    1200,
+    1440
+   ],
+   "hash": "fd38cf904c8fa581"
+  },
+  "wed-2026-0": {
+   "w": 3075,
+   "h": 2309,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2400
+   ],
+   "hash": "b7bd876f5bc7964a"
+  },
+  "wed-2026-1": {
+   "w": 1729,
+   "h": 1298,
+   "widths": [
+    480,
+    800,
+    1200,
+    1729
+   ],
+   "hash": "ab0a586a318cff7b"
+  },
+  "wed-2026-2": {
+   "w": 1537,
+   "h": 1154,
+   "widths": [
+    480,
+    800,
+    1200,
+    1537
+   ],
+   "hash": "b12ed1a6e84fb198"
+  },
+  "wed-2026-3": {
+   "w": 1537,
+   "h": 1154,
+   "widths": [
+    480,
+    800,
+    1200,
+    1537
+   ],
+   "hash": "6e3b403dd9f62290"
+  },
+  "wed-2026-4": {
+   "w": 1729,
+   "h": 1298,
+   "widths": [
+    480,
+    800,
+    1200,
+    1729
+   ],
+   "hash": "1ae440d3939a9993"
+  },
+  "wed-2026-5": {
+   "w": 1080,
+   "h": 810,
+   "widths": [
+    480,
+    800,
+    1080
+   ],
+   "hash": "edb23c4eb74172a8"
+  },
+  "wed-2026-6": {
+   "w": 1537,
+   "h": 1154,
+   "widths": [
+    480,
+    800,
+    1200,
+    1537
+   ],
+   "hash": "e2a3c12668958bd6"
+  },
+  "wed-2026-7": {
+   "w": 1537,
+   "h": 1154,
+   "widths": [
+    480,
+    800,
+    1200,
+    1537
+   ],
+   "hash": "e384bd276d8fc0ea"
+  },
+  "wed-2026-8": {
+   "w": 2049,
+   "h": 1539,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2049
+   ],
+   "hash": "7345229b6e65f3e8"
+  },
+  "wed-2026-9": {
+   "w": 878,
+   "h": 659,
+   "widths": [
+    480,
+    800,
+    878
+   ],
+   "hash": "9b8eb17a8288d748"
+  },
+  "fresque-bois-1": {
+   "w": 2000,
+   "h": 1500,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2000
+   ],
+   "hash": "710ab18a93439a80"
+  },
+  "fresque-bois-2": {
+   "w": 2000,
+   "h": 1500,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2000
+   ],
+   "hash": "8e8f29c5cfdbd3ea"
+  },
+  "fresque-bois-3": {
+   "w": 2000,
+   "h": 1500,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2000
+   ],
+   "hash": "1d4d3e3e73eb2baa"
+  },
+  "fresque-bois-4": {
+   "w": 2000,
+   "h": 1500,
+   "widths": [
+    480,
+    800,
+    1200,
+    1800,
+    2000
+   ],
+   "hash": "425d63e8bddf11a9"
+  },
+  "street-art-1": {
+   "w": 650,
+   "h": 433,
+   "widths": [
+    480,
+    650
+   ],
+   "hash": "918dc16d042d1437"
+  },
+  "street-art-2": {
+   "w": 942,
+   "h": 627,
+   "widths": [
+    480,
+    800,
+    942
+   ],
+   "hash": "ccdef7c74d375c5c"
+  },
+  "street-art-3": {
+   "w": 650,
+   "h": 433,
+   "widths": [
+    480,
+    650
+   ],
+   "hash": "b80f43dfa6c68c39"
+  },
+  "street-art-4": {
+   "w": 649,
+   "h": 432,
+   "widths": [
+    480,
+    649
+   ],
+   "hash": "9960972af1b18608"
+  },
+  "street-art-5": {
+   "w": 649,
+   "h": 432,
+   "widths": [
+    480,
+    649
+   ],
+   "hash": "a69be688c6116d3e"
+  },
+  "street-art-7": {
+   "w": 649,
+   "h": 432,
+   "widths": [
+    480,
+    649
+   ],
+   "hash": "d1bbb94dc93678ac"
+  },
+  "boucle-dau-clash-7-retour-salle": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-dau-clash-7-retour-scene": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-dau-clash-7-retour": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-dau-clash-8-annonce-ring": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-dau-clash-8-annonce": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-urnight-teaser-cams": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-urnight-teaser": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-urnight-retour-vert": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-urnight-retour-rouge": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-urnight-retour": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-urbns-view-1-apollo": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "film-urbns-view-1": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-urbaine-famille-musique": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-urbaine-famille-mode": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-urbaine-famille-lifestyle": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-urbaine-famille-danse": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-urbaine-famille-event": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "film-urbaine-famille": {
+   "w": 720,
+   "h": 1280,
+   "widths": [
+    640,
+    720
+   ]
+  },
+  "boucle-sade-portrait-chambre": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-sade-portrait": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-trailer-2026-studio": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-trailer-2026-victoire": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-trailer-2026-oceanne": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-trailer-2026-maria": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-trailer-2026": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "boucle-mois-de-rentree-terrasse": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  },
+  "film-mois-de-rentree": {
+   "w": 1276,
+   "h": 720,
+   "widths": [
+    640,
+    1276
+   ]
+  }
+ },
+ "boucles": {
+  "dau-clash-7-retour#salle": {
+   "hd": "assets/video/dau-clash-7-retour-salle.mp4",
+   "sd": "assets/video/dau-clash-7-retour-salle-sd.mp4",
+   "poster": "boucle-dau-clash-7-retour-salle",
+   "w": 1276,
+   "h": 720,
+   "alt": "L’amphithéâtre plein, des dizaines de lampes de téléphone levées",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 65
+   },
+   "debut": 57.5,
+   "duree": 6,
+   "hash": "58d955587bcca748"
+  },
+  "dau-clash-7-retour#scene": {
+   "hd": "assets/video/dau-clash-7-retour-scene.mp4",
+   "sd": "assets/video/dau-clash-7-retour-scene-sd.mp4",
+   "poster": "boucle-dau-clash-7-retour-scene",
+   "w": 1276,
+   "h": 720,
+   "alt": "Deux rappeurs face à face devant l’écran DAU CLASH, lumière bleue",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 65
+   },
+   "debut": 14,
+   "duree": 6,
+   "hash": "58d955587bcca748"
+  },
+  "dau-clash-8-annonce#ring": {
+   "hd": "assets/video/dau-clash-8-annonce-ring.mp4",
+   "sd": "assets/video/dau-clash-8-annonce-ring-sd.mp4",
+   "poster": "boucle-dau-clash-8-annonce-ring",
+   "w": 1276,
+   "h": 720,
+   "alt": "Un ring de boxe dans une salle en briques, des mains qu’on bande en rouge",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 54
+   },
+   "debut": 1.5,
+   "duree": 6,
+   "hash": "35c7099c21aa859c"
+  },
+  "urnight-teaser#cams": {
+   "hd": "assets/video/urnight-teaser-cams.mp4",
+   "sd": "assets/video/urnight-teaser-cams-sd.mp4",
+   "poster": "boucle-urnight-teaser-cams",
+   "w": 1276,
+   "h": 720,
+   "alt": "Six caméras de surveillance filment un supermarché, étiquetées Cam R, Cam G, Cam T",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 32
+   },
+   "debut": 9,
+   "duree": 5,
+   "hash": "74ccf43145727249"
+  },
+  "urnight-retour#vert": {
+   "hd": "assets/video/urnight-retour-vert.mp4",
+   "sd": "assets/video/urnight-retour-vert-sd.mp4",
+   "poster": "boucle-urnight-retour-vert",
+   "w": 1276,
+   "h": 720,
+   "alt": "Le dancefloor de l’UR’Night sous une lumière verte, bras levés",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 56
+   },
+   "debut": 43,
+   "duree": 6,
+   "hash": "631f99fe4a5f25de"
+  },
+  "urnight-retour#rouge": {
+   "hd": "assets/video/urnight-retour-rouge.mp4",
+   "sd": "assets/video/urnight-retour-rouge-sd.mp4",
+   "poster": "boucle-urnight-retour-rouge",
+   "w": 1276,
+   "h": 720,
+   "alt": "Deux personnes dansent sous une lumière rouge",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 56
+   },
+   "debut": 12,
+   "duree": 6,
+   "hash": "631f99fe4a5f25de"
+  },
+  "urbns-view-1#apollo": {
+   "hd": "assets/video/urbns-view-1-apollo.mp4",
+   "sd": "assets/video/urbns-view-1-apollo-sd.mp4",
+   "poster": "boucle-urbns-view-1-apollo",
+   "w": 720,
+   "h": 1280,
+   "alt": "La scène de l’Apollo Théâtre, un comédien debout face au public",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 180
+   },
+   "debut": 0.2,
+   "duree": 5,
+   "hash": "1e90e574d61259f9"
+  },
+  "urbaine-famille#musique": {
+   "hd": "assets/video/urbaine-famille-musique.mp4",
+   "sd": "assets/video/urbaine-famille-musique-sd.mp4",
+   "poster": "boucle-urbaine-famille-musique",
+   "w": 720,
+   "h": 1280,
+   "alt": "Pôle musique : un clavier, puis des membres qui dansent dans une maison",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "debut": 20.5,
+   "duree": 2.4,
+   "hash": "9b2c3a7b697d70d0"
+  },
+  "urbaine-famille#mode": {
+   "hd": "assets/video/urbaine-famille-mode.mp4",
+   "sd": "assets/video/urbaine-famille-mode-sd.mp4",
+   "poster": "boucle-urbaine-famille-mode",
+   "w": 720,
+   "h": 1280,
+   "alt": "Pôle mode : un membre en t-shirt Urbaine dans un entrepôt, un dessin sur tablette",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "debut": 24.5,
+   "duree": 2.9,
+   "hash": "9b2c3a7b697d70d0"
+  },
+  "urbaine-famille#lifestyle": {
+   "hd": "assets/video/urbaine-famille-lifestyle.mp4",
+   "sd": "assets/video/urbaine-famille-lifestyle-sd.mp4",
+   "poster": "boucle-urbaine-famille-lifestyle",
+   "w": 720,
+   "h": 1280,
+   "alt": "Pôle lifestyle : deux membres face caméra, de nuit, puis l’entrée de l’Apollo Théâtre",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "debut": 29.4,
+   "duree": 2.6,
+   "hash": "9b2c3a7b697d70d0"
+  },
+  "urbaine-famille#danse": {
+   "hd": "assets/video/urbaine-famille-danse.mp4",
+   "sd": "assets/video/urbaine-famille-danse-sd.mp4",
+   "poster": "boucle-urbaine-famille-danse",
+   "w": 720,
+   "h": 1280,
+   "alt": "Pôle danse : deux danseuses dans un hall au pied d’un grand escalier",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "debut": 33.4,
+   "duree": 2.6,
+   "hash": "9b2c3a7b697d70d0"
+  },
+  "urbaine-famille#event": {
+   "hd": "assets/video/urbaine-famille-event.mp4",
+   "sd": "assets/video/urbaine-famille-event-sd.mp4",
+   "poster": "boucle-urbaine-famille-event",
+   "w": 720,
+   "h": 1280,
+   "alt": "Pôle event : une soirée dans une salle du campus, des invités assis",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "debut": 40,
+   "duree": 2.6,
+   "hash": "9b2c3a7b697d70d0"
+  },
+  "sade-portrait#chambre": {
+   "hd": "assets/video/sade-portrait-chambre.mp4",
+   "sd": "assets/video/sade-portrait-chambre-sd.mp4",
+   "poster": "boucle-sade-portrait-chambre",
+   "w": 1276,
+   "h": 720,
+   "alt": "Une présentatrice assise sur un lit devant des affiches et des vinyles de Sade, lumière rouge",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 292
+   },
+   "debut": 60,
+   "duree": 6,
+   "hash": "a0d55cdd22d002e8"
+  },
+  "trailer-2026#studio": {
+   "hd": "assets/video/trailer-2026-studio.mp4",
+   "sd": "assets/video/trailer-2026-studio-sd.mp4",
+   "poster": "boucle-trailer-2026-studio",
+   "w": 1276,
+   "h": 720,
+   "alt": "Floriane devant des platines et une étagère de casquettes",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 146
+   },
+   "debut": 41,
+   "duree": 5,
+   "hash": "42322d99ac88440a"
+  },
+  "trailer-2026#victoire": {
+   "hd": "assets/video/trailer-2026-victoire.mp4",
+   "sd": "assets/video/trailer-2026-victoire-sd.mp4",
+   "poster": "boucle-trailer-2026-victoire",
+   "w": 1276,
+   "h": 720,
+   "alt": "Victoire, vice-présidente, un cocktail à la main",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 146
+   },
+   "debut": 125,
+   "duree": 5,
+   "hash": "42322d99ac88440a"
+  },
+  "trailer-2026#oceanne": {
+   "hd": "assets/video/trailer-2026-oceanne.mp4",
+   "sd": "assets/video/trailer-2026-oceanne-sd.mp4",
+   "poster": "boucle-trailer-2026-oceanne",
+   "w": 1276,
+   "h": 720,
+   "alt": "Océanne fait un signe de la main face caméra",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 146
+   },
+   "debut": 61,
+   "duree": 5,
+   "hash": "42322d99ac88440a"
+  },
+  "trailer-2026#maria": {
+   "hd": "assets/video/trailer-2026-maria.mp4",
+   "sd": "assets/video/trailer-2026-maria-sd.mp4",
+   "poster": "boucle-trailer-2026-maria",
+   "w": 1276,
+   "h": 720,
+   "alt": "Maria, de nuit devant une grille en fer forgé",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 146
+   },
+   "debut": 88,
+   "duree": 5,
+   "hash": "42322d99ac88440a"
+  },
+  "mois-de-rentree#terrasse": {
+   "hd": "assets/video/mois-de-rentree-terrasse.mp4",
+   "sd": "assets/video/mois-de-rentree-terrasse-sd.mp4",
+   "poster": "boucle-mois-de-rentree-terrasse",
+   "w": 1276,
+   "h": 720,
+   "alt": "Une soirée sous des guirlandes de lumière, des visages éclairés en orange",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 53
+   },
+   "debut": 32,
+   "duree": 6,
+   "hash": "70847d79af357010"
+  }
+ },
+ "films": {
+  "dau-clash-7-retour": {
+   "src": "assets/video/dau-clash-7-retour.mp4",
+   "poster": "film-dau-clash-7-retour",
+   "w": 1276,
+   "h": 720,
+   "duree": 65,
+   "titre": "C’était le DAU’Clash",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DT8fMxVADuN/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 65
+   },
+   "affiche": 41,
+   "hash": "58d955587bcca748",
+   "taille": 10.1
+  },
+  "dau-clash-8-annonce": {
+   "src": "assets/video/dau-clash-8-annonce.mp4",
+   "poster": "film-dau-clash-8-annonce",
+   "w": 1276,
+   "h": 720,
+   "duree": 54,
+   "titre": "La 8e édition du DAU’Clash arrive",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/Df7wfiIxZfK/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 54
+   },
+   "affiche": 3,
+   "hash": "35c7099c21aa859c",
+   "taille": 7.7
+  },
+  "urnight-teaser": {
+   "src": "assets/video/urnight-teaser.mp4",
+   "poster": "film-urnight-teaser",
+   "w": 1276,
+   "h": 720,
+   "duree": 32,
+   "titre": "URNIGHT IS HERE",
+   "credit": "Montage Babylonviz · L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DUGjQOyDJOA/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 32
+   },
+   "affiche": 12,
+   "hash": "74ccf43145727249",
+   "taille": 3.5
+  },
+  "urnight-retour": {
+   "src": "assets/video/urnight-retour.mp4",
+   "poster": "film-urnight-retour",
+   "w": 1276,
+   "h": 720,
+   "duree": 56,
+   "titre": "C’était l’UR’Night",
+   "credit": "Channel 9 Dauphine · L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DWRtJBqEa4S/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 56
+   },
+   "affiche": 44,
+   "hash": "631f99fe4a5f25de",
+   "taille": 15.5
+  },
+  "urbns-view-1": {
+   "src": "assets/video/urbns-view-1.mp4",
+   "poster": "film-urbns-view-1",
+   "w": 720,
+   "h": 1280,
+   "duree": 180,
+   "titre": "URBN’s View",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DVBwm6DDJ9U/",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 180
+   },
+   "affiche": 4,
+   "hash": "1e90e574d61259f9",
+   "taille": 18.4
+  },
+  "urbaine-famille": {
+   "src": "assets/video/urbaine-famille.mp4",
+   "poster": "film-urbaine-famille",
+   "w": 720,
+   "h": 1280,
+   "duree": 90,
+   "titre": "L’urbaine, une grande famille",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DdUDF0Vg09C/",
+   "source": {
+    "w": 720,
+    "h": 1280,
+    "duree": 90
+   },
+   "affiche": 51,
+   "hash": "9b2c3a7b697d70d0",
+   "taille": 12.8
+  },
+  "sade-portrait": {
+   "src": "assets/video/sade-portrait.mp4",
+   "poster": "film-sade-portrait",
+   "w": 1276,
+   "h": 720,
+   "duree": 292,
+   "titre": "Sade, l’élégance d’une voix intemporelle",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DeCQ69lAyRf/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 292
+   },
+   "affiche": 8,
+   "hash": "a0d55cdd22d002e8",
+   "taille": 20.2
+  },
+  "trailer-2026": {
+   "src": "assets/video/trailer-2026.mp4",
+   "poster": "film-trailer-2026",
+   "w": 1276,
+   "h": 720,
+   "duree": 146,
+   "titre": "Trailer 2026–2027",
+   "credit": "Channel 9 Dauphine · L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DePhnztxsAu/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 146
+   },
+   "affiche": 127,
+   "hash": "42322d99ac88440a",
+   "taille": 23.6
+  },
+  "mois-de-rentree": {
+   "src": "assets/video/mois-de-rentree.mp4",
+   "poster": "film-mois-de-rentree",
+   "w": 1276,
+   "h": 720,
+   "duree": 53,
+   "titre": "Merci pour ce mois de divertissement",
+   "credit": "L’Urbaine Paris",
+   "lien": "https://www.instagram.com/urbaineparis/reel/DeRp6MigAj3/",
+   "source": {
+    "w": 1276,
+    "h": 720,
+    "duree": 53
+   },
+   "affiche": 34,
+   "hash": "70847d79af357010",
+   "taille": 11.2
+  }
+ }
+}
