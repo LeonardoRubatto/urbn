@@ -130,12 +130,24 @@
   .cal-row { grid-template-columns: auto 1fr; gap: var(--s-2) var(--s-4); align-items: start; }
   .cal-tag { grid-column: 2; justify-self: start; }
   .calendrier { padding-bottom: var(--s-9); }
+  /* Téléphone : média 4:5 décalé d’un côté puis de l’autre, titre qui mord sur son bas,
+     méta au-dessus ; texte resserré sous le titre. */
   .rows { gap: var(--s-8); }
-  .row-link, .row--alt .row-link { grid-template-columns: 1fr; gap: var(--s-4); }
-  .row--alt .row-media { order: 0; }
+  .row-link, .row--alt .row-link { grid-template-columns: 1fr; gap: 0; }
+  .row-copy { display: contents; }
+  .row-meta { order: -2; margin-bottom: var(--s-3); }
+  .row-media { order: -1; width: 84%; }
+  .row--alt .row-media { order: -1; margin-left: auto; }
+  .row-media .loop, .row-media .still, .row--alt .row-media .loop, .row--alt .row-media .still { aspect-ratio: 4/5; }
   .row--alt .row-copy { text-align: left; justify-items: start; }
-  .row:nth-child(even) .row-media { margin-left: 14vw; }
-  .row-title { font-size: clamp(3rem, 16vw, 5rem); }
+  .row-title { position: relative; z-index: 1; font-size: clamp(3rem, 16vw, 5rem); margin-top: -0.55em; text-shadow: 0 2px 24px oklch(0 0 0 / 0.5); }
+  .row--alt .row-title { text-align: right; }
+  .row-genre { margin-top: var(--s-3); font-size: 1.0625rem; }
+  .row-resume { margin-top: var(--s-1); font-size: 0.9375rem; }
+  .row--alt .row-genre, .row--alt .row-resume, .row--alt .row-meta { text-align: right; justify-content: flex-end; margin-left: auto; }
+  .row--text .row-link { padding-top: var(--s-5); border-top: 1px solid var(--trait); }
+  .row--text .row-title { margin-top: 0; font-size: 2.5rem; }
+  .row-out { margin-top: var(--s-3); }
 
   .fiche-cover { height: auto; min-height: 0; display: grid; grid-template-columns: 1fr; grid-template-rows: minmax(420px, 74svh) auto; }
   .fiche-media, .fiche-cover > .plateau-light, .decor--fiche { grid-area: 1 / 1; }

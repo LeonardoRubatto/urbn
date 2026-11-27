@@ -27,7 +27,9 @@
 .avec-name { display: block; font-size: clamp(1.75rem, 0.9rem + 2.6vw, 3.75rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; font-variation-settings: "wdth" var(--w, 100); color: var(--blanc); transition: color 270ms var(--ease-out); }
 .avec-role { display: block; margin-top: 6px; font-size: 0.8125rem; color: var(--gris); max-width: 32ch; }
 .avec-list a:hover .avec-name, .avec-list a:focus-visible .avec-name { color: var(--gel); }
-.avec-list li:nth-child(3n+2) .avec-name { color: oklch(0.88 0.01 270); }
+/* Touches de couleur sporadiques : un nom sur trois prend la lumière de son projet. */
+.avec-list li:nth-child(3n+2) .avec-name { color: color-mix(in oklch, var(--gel) 82%, white 18%); }
+.avec-list li:nth-child(3n+2) .avec-role::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--gel); margin-right: 6px; vertical-align: 1px; }
 
 /* ---------- Cinq pôles : entrée en rideau (ordinateur) ----------
    Grammaire « section-transitions » du design system : l’état caché n’existe qu’avec JavaScript,
@@ -60,8 +62,11 @@
   .tableaux-head, .poles-head { margin-bottom: var(--s-6); }
   .bureau-head { margin-bottom: var(--s-6); }
   .avec-head { grid-template-columns: 1fr; gap: var(--s-3); }
-  .avec-list { gap: var(--s-4) var(--s-5); }
-  .avec-name { font-size: clamp(1.625rem, 8.5vw, 2.25rem); }
+  /* Téléphone : deux colonnes, noms étroits de même largeur, un filet au-dessus de chacun. */
+  .avec-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5) var(--s-4); }
+  .avec-list li { border-top: 1px solid var(--trait); padding-top: var(--s-3); }
+  .avec-name { font-size: clamp(1.25rem, 6.4vw, 1.625rem); font-variation-settings: "wdth" 70; line-height: 1; }
+  .avec-role { font-size: 0.75rem; line-height: 1.35; }
   .figure-word span { font-size: calc(26vw * 100 / var(--w, 100)); }
   .figure--right { right: -14vw; }
   .figure--left { left: -10vw; }

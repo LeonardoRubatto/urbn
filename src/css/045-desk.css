@@ -12,7 +12,9 @@
 
 .desk-body { display: grid; grid-template-columns: minmax(180px, 220px) 1fr; gap: var(--s-6); align-items: end; margin-top: calc(var(--s-4) * -1); }
 /* Colonne de gauche : onglets puis le bouton du dossier choisi, calés en haut du plan photo. */
-.desk-rail { align-self: start; margin-top: var(--s-8); display: grid; gap: var(--s-6); justify-items: start; }
+.desk-rail { align-self: stretch; display: flex; flex-direction: column; align-items: flex-start; padding-top: var(--s-8); }
+/* Le bouton descend au niveau du titre du dossier (même ligne que « DAU’Clash »). */
+.desk-actions { margin-top: auto; padding-bottom: clamp(19px, 3px + 1.45vw, 25px); }
 .press-tabs { display: grid; width: 100%; border-top: 1px solid var(--trait); }
 .desk-actions [hidden] { display: none; }
 @media (min-width: 901px) { .dispatch-caption .dispatch-ticket { display: none; } }

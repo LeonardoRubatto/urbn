@@ -260,7 +260,7 @@ videos:
     credit: Channel 9 Dauphine · L’Urbaine Paris
     source: https://www.instagram.com/urbaineparis/reel/DePhnztxsAu/
     film: true
-    affiche: 127
+    affiche: 140
     boucles:
       studio: { debut: 41, duree: 5, alt: "Floriane devant des platines et une étagère de casquettes" }
       victoire: { debut: 125, duree: 5, alt: "Victoire, vice-présidente, un cocktail à la main" }

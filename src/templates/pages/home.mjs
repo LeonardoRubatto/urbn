@@ -18,8 +18,9 @@ function couverture(ctx, next) {
   <div class="plateau-head">
     ${decor("Urbaine Paris", { tag: "h1", id: "titre-site", widths: [62, 125, 82, 108], cls: "decor--plateau decor--wide" })}
     ${decor("Urbaine", { widths: [72, 125, 62, 100], cls: "decor--plateau decor--narrow" }).replace('<p class', '<p aria-hidden="true" class')}
-    <p class="plateau-tagline">${esc(ctx.site.baseline)} · depuis ${ctx.site.fondation}</p>
+    <p class="plateau-tagline plateau-tagline--m">${esc(ctx.site.baseline)} · depuis ${ctx.site.fondation}</p>
   </div>
+  <p class="plateau-tagline plateau-tagline--d">${esc(ctx.site.baseline)} · depuis ${ctx.site.fondation}</p>
   ${next ? `<a class="plateau-date" href="${next.href}"${gelStyle(next.gel)}>
     <span class="plateau-date-label">Prochaine date</span>
     <span class="plateau-date-day">${pad(next.date.date.getDate())}.${pad(next.date.date.getMonth() + 1)}</span>
@@ -102,9 +103,7 @@ function tableaux(ctx, list) {
     <header class="tableaux-head"><h2 id="titre-tableaux" class="section-title">Les projets</h2><p>Scène, soirées, formats vidéo, murs du campus : ce que L’Urbaine a fait cette année et les précédentes.</p></header>
     <div class="tableaux-body">
       <div class="tableaux-stage" aria-hidden="true">
-        ${list.map((p, i) => `<div class="tableaux-frame${i ? "" : " is-current"}" data-frame>${cover(ctx, p, { sizes: "(min-width: 900px) 54vw, 92vw", decorative: true })}</div>`).join("")}
-        <div class="tableaux-bars">${list.map(() => `<span data-bar><i></i></span>`).join("")}</div>
-        <p class="tableaux-now"><span data-now-title>${esc(list[0]?.titre || "")}</span><span data-now-when>${esc(list[0] ? when(list[0]) : "")}</span></p>
+        ${list.map((p, i) => `<div class="tableaux-frame${i ? "" : " is-current"}" data-frame>${cover(ctx, p, { sizes: "(min-width: 900px) 54vw, 100vw", decorative: true })}</div>`).join("")}
       </div>
       <ol class="tableaux-list" role="list">
         ${list.map((p, i) => `<li class="tableau${i ? "" : " is-active"}" data-tableau data-gel="${esc(p.gel)}" data-title="${esc(p.titre)}" data-when="${esc(when(p))}"${gelStyle(p.gel)}>
@@ -166,5 +165,5 @@ export function home(ctx, { hero = ctx.site.couverture_style } = {}) {
   // plateau : décor projeté en couverture, puis la composition décalée devenue « À la une ».
   // decale  : la composition décalée en couverture (titre L’Urbaine.), puis l’affiche du prochain évènement.
   const top = hero === "plateau" ? couverture(ctx, next) + couvertureDecalee(ctx, { asHero: false }) : couvertureDecalee(ctx) + affiche(ctx, next);
-  return top + poles(ctx) + tableaux(ctx, list) + multicam(ctx) + bande(ctx) + collaborations(ctx) + bureau(ctx) + contact(ctx);
+  return top + poles(ctx) + tableaux(ctx, list) + collaborations(ctx) + multicam(ctx) + bande(ctx) + bureau(ctx) + contact(ctx);
 }
